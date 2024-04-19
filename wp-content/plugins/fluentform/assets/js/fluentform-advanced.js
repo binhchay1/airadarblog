@@ -1,1 +1,2114 @@
-(()=>{"use strict";const e=function(e,t){var n=t.find(".jss-ff-el-net-promoter");n.length&&e.each(n,(function(t,n){e(n).on("click","label",(function(t){var n=e(this);n.addClass("active"),n.prevAll().removeClass("active"),n.nextAll().removeClass("active")}))}))};var t=function(e){!function(e){e.on("click",".js-repeat .repeat-plus",(function(e){var t=jQuery(this),n=t.closest(".ff-el-repeat"),a=parseInt(n.data("max_repeat")),i=n.find(".ff-t-cell:first-child .ff-el-input--content > input").length;if(!(a&&a<=i)){a&&a-i==1&&n.find(".repeat-plus").hide();var r=t.closest("div"),o=r.index(),f=t.closest(".ff-el-input--content").find(".ff-t-cell").length;t.closest(".ff-el-input--content").find(".ff-t-cell").each((function(e,t){var n=jQuery(this).find(".ff-el-form-control:last-child"),a=n.attr("tabindex"),i=n.clone(),r={value:"",id:"ffrpt-"+(new Date).getTime()+e};a&&(r.tabIndex=parseInt(a)+f),i.prop(r),i.insertAfter(n)})),r.clone().insertAfter(r),t.closest(".ff-el-input--content").find(".ff-t-cell").eq(0).find("input:eq(".concat(o+1,")")).focus()}})),e.on("click",".js-repeat .repeat-minus",(function(e){var t=!1,n=jQuery(this),a=n.closest("div");n.closest(".ff-el-repeat").find(".repeat-plus").show(),n.closest(".ff-el-input--content").find(".ff-t-cell").each((function(){var e=a.index(),n=jQuery(this).find(".ff-el-form-control:eq("+e+")");a.siblings().length&&(t=n.remove().length)})),t&&a.remove()}))}(e),function(e){var t=window.localStorage.getItem("ff_window_type");jQuery(".ff_form_preview").length&&jQuery(".ff_flexible_table").addClass(t),e.on("screen-change",(function(e,t){jQuery(".ff_form_preview").length&&("375px"===t?jQuery(".ff_flexible_table").addClass("mobile"):jQuery(".ff_flexible_table").removeClass("mobile"))})),e.on("click",".js-repeater .repeat-plus",(function(e){var t=jQuery(this),n=t.closest("table"),a=t.closest("tr"),i=parseInt(n.attr("data-max_repeat")),r=n.find("tbody tr").length;if(i&&r==i)n.addClass("repeat-maxed");else{var o=a.clone();o.find("td").each((function(e,t){var n=jQuery(this).find(".ff-el-form-control:last-child"),a=(n.attr("tabindex"),n.attr("data-mask"));a&&n.mask(a);var i="ffrpt-"+(new Date).getTime()+e,r=(n.data("name"),{value:"",id:i});n.prop(r)})),o.insertAfter(a);var f=n.attr("data-root_name"),l=0;n.find("tbody tr").each((function(e,t){jQuery(this).find(".ff-el-form-control").each((function(t,n){var a=jQuery(n);0==e&&(l=a.attr("tabindex")),a.prop({name:f+"["+e+"][]"}),a.attr("data-name",f+"_"+t+"_"+e),l&&a.attr("tabindex",l)}))})),o.find(".ff-el-form-control")[0].focus(),n.trigger("repeat_change"),i&&r+1==i&&n.addClass("repeat-maxed")}})),e.on("click",".js-repeater .repeat-minus",(function(e){var t=jQuery(this),n=t.closest("table");if(1!=n.find("tbody tr").length){t.closest("tr").remove(),n.removeClass("repeat-maxed");var a=n.attr("data-root_name");n.find("tbody tr").each((function(e,t){jQuery(this).find(".ff-el-form-control").each((function(t,n){jQuery(n).prop({name:a+"["+e+"][]"})}))})),n.trigger("repeat_change")}}))}(e)};function n(){n=function(e,t){return new r(e,void 0,t)};var e=RegExp.prototype,t=new WeakMap;function r(e,n,i){var o=new RegExp(e,n);return t.set(o,i||t.get(e)),a(o,r.prototype)}function o(e,n){var a=t.get(n);return Object.keys(a).reduce((function(t,n){var i=a[n];if("number"==typeof i)t[n]=e[i];else{for(var r=0;void 0===e[i[r]]&&r+1<i.length;)r++;t[n]=e[i[r]]}return t}),Object.create(null))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),Object.defineProperty(e,"prototype",{writable:!1}),t&&a(e,t)}(r,RegExp),r.prototype.exec=function(t){var n=e.exec.call(this,t);if(n){n.groups=o(n,this);var a=n.indices;a&&(a.groups=o(a,this))}return n},r.prototype[Symbol.replace]=function(n,a){if("string"==typeof a){var r=t.get(this);return e[Symbol.replace].call(this,n,a.replace(/\$<([^>]+)>/g,(function(e,t){var n=r[t];return"$"+(Array.isArray(n)?n.join("$"):n)})))}if("function"==typeof a){var f=this;return e[Symbol.replace].call(this,n,(function(){var e=arguments;return"object"!=i(e[e.length-1])&&(e=[].slice.call(e)).push(o(e,f)),a.apply(this,e)}))}return e[Symbol.replace].call(this,n,a)},n.apply(this,arguments)}function a(e,t){return a=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(e,t){return e.__proto__=t,e},a(e,t)}function i(e){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i(e)}function r(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,o(a.key),a)}}function o(e){var t=function(e,t){if("object"!=i(e)||!e)return e;var n=e[Symbol.toPrimitive];if(void 0!==n){var a=n.call(e,t||"default");if("object"!=i(a))return a;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==i(t)?t:String(t)}const f=function(){function e(t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.fields=t,this.formData=n,this.counter=0,this.field_statues={}}var t,a,o;return t=e,(a=[{key:"setFields",value:function(e){this.fields=e}},{key:"setFormData",value:function(e){this.formData=e}},{key:"getCalculatedStatuses",value:function(){for(var e=0,t=Object.keys(this.fields);e<t.length;e++){var n=t[e],a=this.fields[n];this.field_statues[n]=this.evaluate(a,n)}return this.field_statues}},{key:"evaluate",value:function(e,t){var n=this,a=!1;if(e.status){this.counter++;var i=e.type,r=1;"any"==i&&(r=0),e.conditions.forEach((function(e){var a=n.getItemEvaluateValue(e,n.formData[e.field]);a&&n.fields[e.field]&&e.field!=t&&(a=n.evaluate(n.fields[e.field],e.field)),"any"==i?a&&(r=1):!a&&r&&(r=!1)})),a=1==r}return e.status&&e.conditions.length&&!a||e.container_condition&&(a=this.evaluate(e.container_condition)),a}},{key:"getItemEvaluateValue",value:function(e,t){t=t||null;var n=jQuery("[name='".concat(e.field,"']"));return"="==e.operator?""===e.value?null===t:"object"==i(t)?null!==t&&-1!=t.indexOf(e.value):n.hasClass("ff_numeric")?this.parseFormattedNumericValue(n,t)==this.parseFormattedNumericValue(n,e.value):t==e.value:"!="==e.operator?"object"==i(t)?null!==t&&-1==t.indexOf(e.value):n.hasClass("ff_numeric")?this.parseFormattedNumericValue(n,t)!=this.parseFormattedNumericValue(n,e.value):t!=e.value:">"==e.operator?t&&this.parseFormattedNumericValue(n,t)>this.parseFormattedNumericValue(n,e.value):"<"==e.operator?t&&this.parseFormattedNumericValue(n,t)<this.parseFormattedNumericValue(n,e.value):">="==e.operator?t&&this.parseFormattedNumericValue(n,t)>=this.parseFormattedNumericValue(n,e.value):"<="==e.operator?t&&this.parseFormattedNumericValue(n,t)<=this.parseFormattedNumericValue(n,e.value):"startsWith"==e.operator?t&&t.startsWith(e.value):"endsWith"==e.operator?t&&t.endsWith(e.value):"contains"==e.operator?null!==t&&-1!=t.indexOf(e.value):"doNotContains"==e.operator?null!==t&&-1==t.indexOf(e.value):"test_regex"==e.operator&&(t=t||"",this.stringToRegex(e.value).test(t))}},{key:"stringToRegex",value:function(e){var t,a=(null===(t=String(e).match(n(/^\/(.*)\/([gimsuy]*)$/,{body:1,flags:2})))||void 0===t?void 0:t.groups)||{},i=a.body,r=a.flags;return i?(r=r||"g",RegExp(i,r)):new RegExp(e,"g")}},{key:"parseFormattedNumericValue",value:function(e,t){if(e.hasClass("ff_numeric")){var n=JSON.parse(e.attr("data-formatter"));return currency(t,n).value}return Number(t)||0}}])&&r(t.prototype,a),o&&r(t,o),Object.defineProperty(t,"prototype",{writable:!1}),e}();const l=function(e,t,n){var a,i,r,o,l,s="."+n.form_instance;(a={},i={},r=function(n){e.each(n,(function(e,t){var n=l(e).closest(".has-conditions");t?("0px"==n.css("height")&&n.attr("style",""),n.removeClass("ff_excluded").addClass("ff_cond_v").slideDown(200)):n.removeClass("ff_cond_v").addClass("ff_excluded").slideUp(200)})),t.trigger("do_calculation")},o=function(){var n={};return e.each(a,(function(a,i){var r=i.prop("type")||i.attr("data-type");if("radio"==r)n[a]="",i.each((function(t,i){e(i).is(":checked")&&(n[a]=e(i).val())}));else if("checkbox"==r)a=a.replace("[]",""),n[a]=[],i.each((function(t,i){e(i).is(":checked")&&n[a].push(e(i).val())}));else if("select-multiple"==r){a=a.replace("[]","");var o=i.val();n[a]=o||[]}else if("file"==r){var f="";t.find("input[name="+a+"]").closest(".ff-el-input--content").find(".ff-uploaded-list").find(".ff-upload-preview[data-src]").each((function(t,n){f+=e(this).data("src")})),n[a]=f}else n[a]=i.val()})),n},l=function(t){var n=e(s),a=e("[data-name='"+t+"']",n);return(a=a.length?a:e("[name='"+t+"']",n)).length?a:e("[name='"+t+"[]']",n)},{init:function(){if(n.conditionals){e.each(n.conditionals,(function(t,n){t&&e.each(n.conditions,(function(e,t){var n=l(t.field);a[n.prop("name")]=n}))})),i=o();var t=new f(n.conditionals,i);e.each(a,(function(e,n){n.on("change",(function(){i=o(),t.setFormData(i),r(t.getCalculatedStatuses())}))})),r(t.getCalculatedStatuses())}}}).init()};function s(e){return s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},s(e)}function c(e){return c="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},c(e)}function u(e){return function(e){if(Array.isArray(e))return d(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(!e)return;if("string"==typeof e)return d(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);"Object"===n&&e.constructor&&(n=e.constructor.name);if("Map"===n||"Set"===n)return Array.from(e);if("Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return d(e,t)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function d(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,a=new Array(t);n<t;n++)a[n]=e[n];return a}function p(e,t,n,a){var i=0,r="";n.stepAnimationDuration=parseInt(n.stepAnimationDuration);var o="yes"==t.find(".ff-step-container").attr("data-enable_step_data_persistency"),f=!1;o&&(f="yes"==t.find(".ff-step-container").attr("data-enable_step_page_resume"));var l=!!window.fluentFormVars.is_rtl,s=!1,d=function(){return window.fluentFormApp(t)},p=function(t){var a=t.response,i=t.step_completed,r=[];if(jQuery.each(a,(function(t,a){if(a){var i=Object.prototype.toString.call(a);if("[object Object]"===i){var o=jQuery("[data-name=".concat(t,"]"));if(o.length&&"tabular-element"===o.attr("data-type"))jQuery.each(a,(function(n,a){var i=jQuery('[name="'.concat(t,"[").concat(n,']\\[\\]"]'));i.length||(i=jQuery('[name="'.concat(t,"[").concat(n,']"]'))),jQuery.each(i,(function(t,n){var i=e(n).val();-1===jQuery.inArray(i,a)&&i!==a||e(n).prop("checked",!0).change()}))}));else if("chained-select"===o.attr("data-type")){var f={meta_key:o.find("select:first").attr("data-meta_key"),form_id:o.closest("form").attr("data-form_id"),action:"fluentform_get_chained_select_options",filter_options:"all",keys:a};jQuery.getJSON(n.ajaxUrl,f).then((function(e){jQuery.each(e,(function(e,t){var n=o.find("select[data-key='".concat(e,"']"));0!=n.attr("data-index")&&jQuery.each(t,(function(e,t){n.append(jQuery("<option />",{value:t,text:t}))})),n.attr("disabled",!1).val(a[e])}))}))}else jQuery.each(a,(function(e,n){jQuery('[name="'.concat(t,"[").concat(e,']"]')).val(n).change()}))}else if("[object Array]"===i){var l=jQuery("[name=".concat(t,"]"));if("file"==(l=(l=l.length?l:jQuery("[data-name=".concat(t,"]"))).length?l:jQuery("[name=".concat(t,"\\[\\]]"))).attr("type"))_(l,a);else if(l.prop("multiple"))if(e.isFunction(window.Choices)){var s=l.data("choicesjs");r.push({handler:s,values:a})}else l.val(a).change();else if("repeater_field"===l.attr("data-type")){var c=l.find("tbody"),u=l.attr("data-name");jQuery.each(a,(function(t,n){0!=t?c.find("tr:last").clone().appendTo(c).find(".ff-el-form-control").each((function(a,i){var r="ffrpt-"+(new Date).getTime()+a;e(i).val(n[a]),e(i).attr({id:r,name:"".concat(u,"[").concat(t,"][]"),value:n[a]}).change()})):c.find("tr:first .ff-el-form-control").each((function(t,a){e(a).val(n[t]).change()}))}))}else l.each((function(t,n){-1!=jQuery.inArray(e(n).val(),a)&&e(n).prop("checked",!0).change()}))}else{var d=jQuery("[name=".concat(t,"]"));if("radio"===d.prop("type")||"checkbox"===d.prop("type"))jQuery("[name=".concat(t,'][value="').concat(a,'"]')).prop("checked",!0).change();else{var p=d.closest(".ff-el-group").find(".fluentform-signature-pad");if(p.length){var m=p[0].getContext("2d"),v=new Image;v.src=a,v.onload=function(){m.drawImage(v,0,0)}}d.val(a).change()}}}})),r.length>0)for(var o=0;o<r.length;o++)r[o].handler.setValue(r[o].values).change();s=!0,f&&g(i,n.stepAnimationDuration,!0),s=!1},m=function(t,a){0!==t.length&&(e.each(t,(function(t,n){e(n).attr("data-step-number",t)})),t.on("click",(function(t){var i=d(),r=e(this),o=0;try{var f=r.data("step-number");if(isNaN(f))return;e.each(a,(function(t,n){if(o=t,t<f){var a=e(n).find(":input").not(":button").filter((function(t,n){return!e(n).closest(".has-conditions").hasClass("ff_excluded")}));a.length&&i.validate(a)}})),g(f,n.stepAnimationDuration,!0)}catch(t){if(!(t instanceof window.ffValidationError))throw t;g(o,n.stepAnimationDuration,!0),i.showErrorMessages(t.messages),i.scrollToFirstError(350)}})))},v=function(a){if(t.find(".ff-el-progress").length){var i=a.totalSteps,r=a.activeStep,o=100/i*(r+1),f=t.find(".ff-el-progress-title li"),l=t.find(".ff-step-header .ff-el-progress-bar"),s=l.find("span");l.css({width:o+"%"}),o?l.append(s.text(parseInt(o)+"%")):s.empty();var c=n.step_text,u=e(f[r]).text();c=c.replace("%activeStep%",r+1).replace("%totalStep%",i).replace("%stepTitle%",u),t.find(".ff-el-progress-status").html(c),f.css("display","none"),e(f[r]).css("display","inline")}},h=function(n){e(document).on("keydown",a+" .fluentform-step > .step-nav button",(function(t){9==t.which&&"next"==e(this).data("action")&&t.preventDefault()})),e(a).on("click",".fluentform-step  .step-nav button, .fluentform-step  .step-nav img",(function(a){var r=e(this).data("action"),o="next",f=e(this).closest(".fluentform-step"),l=d();if("next"==r){try{var s=f.find(":input").not(":button").filter((function(t,n){return!e(n).closest(".has-conditions").hasClass("ff_excluded")}));s.length&&l.validate(s),i++}catch(a){if(!(a instanceof window.ffValidationError))throw a;return l.showErrorMessages(a.messages),void l.scrollToFirstError(350)}t.trigger("ff_to_next_page",i),jQuery(document).trigger("ff_to_next_page",{step:i,form:t});var c=t.find(".fluentform-step");t.trigger("ff_render_dynamic_smartcodes",e(c[i]))}else i--,o="prev",t.trigger("ff_to_prev_page",i),jQuery(document).trigger("ff_to_prev_page",{step:i,form:t});var u="yes"!=t.find(".ff-step-container").attr("data-disable_auto_focus");g(i,n,u,o)}))},g=function(n,f){var c=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],d=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"next";e("div"+a+"_errors").empty(),i=n;var p=t.find(".ff-step-body"),m=t.find(".ff-step-titles li"),h=t.find(".fluentform-step"),g=h.length;t.offset().top,e("#wpadminbar");h.removeClass("active"),e(h[i]).addClass("active"),m.removeClass("ff_active ff_completed"),e.each(u(Array(i).keys()),(function(t){e(e(m[t])).addClass("ff_completed")})),e(m[i]).addClass("ff_active");var _=function(){if(!window.ff_disable_step_scroll){var n=t.find(".ff_step_start");if(window.ff_scroll_top_offset)var a=window.ff_scroll_top_offset;else a=n.offset().top-20;var i,r,o,l,s;(r=(i=n).offset().top,o=r+i.outerHeight(),l=e(window).scrollTop(),s=l+e(window).height(),o>l&&r<s)&&!window.ff_force_scroll||e("html, body").delay(f).animate({scrollTop:a},0)}},b={left:-100*i+"%"};switch(l&&(b={right:-100*i+"%"}),e(h[i]).closest(".ff-step-container").data("animation_type")){case"slide":p.animate(b,f,(function(){c&&_(),p.css({width:r})}));break;case"fade":p.css({opacity:0}),p.animate(b,f,(function(){c&&_(),p.css({width:r})})),p.animate({opacity:1},f);break;case"slide_down":p.hide(),p.css(b),p.slideDown(f);break;default:p.css(b)}if(o&&!s&!(0===i)&&y(t,i).then((function(e){console.log(e)})),v({activeStep:i,totalSteps:g}),h.last().hasClass("active"))t.find('button[type="submit"]').css("display","inline-block");else if(t.find('button[type="submit"]').css("display","none"),!window.ff_disable_auto_step){var x=0;t.find(".fluentform-step.active .ff_excluded").length&&(x=50),setTimeout((function(){var e=t.find(".fluentform-step.active"),n=t.find(".fluentform-step.active > div").length-1,a=t.find(".fluentform-step.active > .ff_excluded").length;t.find(".fluentform-step.active > .ff-t-container").length&&(n-=t.find(".fluentform-step.active > .ff-t-container").length,n+=t.find(".fluentform-step.active > .ff-t-container > .ff-t-cell > div").length,a+=t.find(".fluentform-step.active > .ff-t-container > .ff-t-cell > .ff_excluded").length,t.find(".fluentform-step.active > .ff-t-container.ff_excluded").length&&(a-=t.find(".fluentform-step.active > .ff-t-container.ff_excluded").length,a-=t.find(".fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > .ff_excluded").length,a+=t.find(".fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > div").length)),n==a&&e.find(".step-nav button[data-action="+d+"], .step-nav img[data-action="+d+"]").click()}),x)}},y=function(t,a){var i=t.find(":input").filter((function(t,n){return!e(n).closest(".has-conditions").hasClass("ff_excluded")}));i.filter((function(t,n){var a=e(n);return a.parents().hasClass("ff_repeater_table")&&"select"==a.attr("type")&&!a.val()})).prepend("<option selected disabled />");var r=i.serialize();e.each(t.find("[type=file]"),(function(t,n){var a={},i=n.name+"[]";a[i]=[],e(n).closest("div").find(".ff-uploaded-list").find(".ff-upload-preview[data-src]").each((function(t,n){a[i][t]=e(this).data("src")})),e.each(a,(function(t,n){if(n.length){var a={};a[t]=n,r+="&"+e.param(a),!0}}))}));var o={active_step:a,data:r,form_id:t.data("form_id"),action:"fluentform_step_form_save_data"};return jQuery.post(n.ajaxUrl,o)},_=function(t,a){var i=t.closest(".ff-el-input--content").find(".ff-uploaded-list");e.each(a,(function(t,a){a="object"===c(a)?a:{url:a,data_src:a};var r=e("<div/>",{class:"ff-upload-preview","data-src":a.data_src,style:"border: 1px solid rgb(111, 117, 125)"}),o=e("<div/>",{class:"ff-upload-thumb"});o.append(e("<div/>",{class:"ff-upload-preview-img",style:"background-image: url('".concat(b(a.url),"');")}));var f=e("<div/>",{class:"ff-upload-details"}),l=e("<span/>",{html:n.upload_completed_txt,class:"ff-upload-progress-inline-text ff-inline-block"}),s=a.url.substring(a.url.lastIndexOf("/")+1);s.includes("-ff-")&&(s=s.substring(s.lastIndexOf("-ff-")+4));var u=e("<div/>",{class:"ff-upload-filename",html:s}),d=e('\n\t\t\t\t\t\t\t\t\t<div class="ff-upload-progress-inline ff-el-progress">\n\t\t\t\t\t\t\t\t\t\t<div style="width: 100%;" class="ff-el-progress-bar"></div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t'),p=e("<span/>",{"data-href":"#",html:"&times;",class:"ff-upload-remove"}),m=e("<div>",{class:"ff-upload-filesize ff-inline-block",html:""}),v=e("<div>",{class:"ff-upload-error",style:"color:red;"});f.append(u,d,l,m,v,p),r.append(o,f),i.append(r)})),t.trigger("change_remaining",-a.length),t.trigger("change")},b=function(e){var t=e.split(/[#?]/)[0].split(".").pop().trim().toLowerCase();if(-1!=["jpg","jpeg","gif","png"].indexOf(t))return e;var n=document.createElement("canvas");n.width=60,n.height=60,n.style.zIndex=8,n.style.position="absolute",n.style.border="1px solid";var a=n.getContext("2d");return a.fillStyle="rgba(0, 0, 0, 0.2)",a.fillRect(0,0,60,60),a.font="13px Arial",a.fillStyle="white",a.textAlign="center",a.fillText(t,30,30,60),n.toDataURL()};return{init:function(){var a,f,l,s;o&&jQuery(document).ready((function(e){jQuery.getJSON(n.ajaxUrl,{form_id:t.data("form_id"),action:"fluentform_step_form_get_data"}).then((function(e){e&&p(e)}))})),t.find(".fluentform-step:first").find('.step-nav [data-action="prev"]').remove(),a=t.find(".ff-step-body"),f=t.find(".fluentform-step"),l=f.length,s=t.find(".ff-step-titles li"),r=100*l+"%",a.css({width:r}),f.css({width:100/l+"%"}),e(f[i]).addClass("active"),e(s[i]).addClass("active"),f.length&&!f.last().hasClass("active")&&t.find('button[type="submit"]').css("display","none"),v({activeStep:i,totalSteps:l}),h(n.stepAnimationDuration),m(s,f),function(){function n(e){if(1==e.closest(".fluentform-step.active").find(".ff-el-group:not(.ff_excluded):not(.ff-custom_html)").length)if(e.closest(".fluentform-step.active").find(".ff_excluded").length){var t=window.ffTransitionTimeOut||400;setTimeout((function(){e.closest(".fluentform-step.active").find(".ff-btn-next").trigger("click")}),t)}else e.closest(".fluentform-step.active").find(".ff-btn-next").trigger("click")}"yes"==t.find(".ff-step-container").attr("data-enable_auto_slider")&&(t.find(".ff-el-form-check-radio,.ff-el-net-label, .ff-el-ratings label").on("click",(function(){n(e(this))})),t.find("select").on("change",(function(){n(e(this))})))}()},updateSlider:g,populateFormDataAndSetActiveStep:p}}var m,v,h=[{type:8,token:"round",show:"round",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0;return t||0===t||(t=2),e=parseFloat(e).toFixed(t),parseFloat(e)}},{type:0,token:"ceil",show:"ceil",value:function(e){return Math.ceil(e)}},{type:0,token:"floor",show:"floor",value:function(e){return Math.floor(e)}},{type:0,token:"abs",show:"abs",value:function(e){return Math.abs(e)}},{type:8,token:"max",show:"max",value:function(e,t){return e>t?e:t}},{type:8,token:"min",show:"min",value:function(e,t){return e<t?e:t}}];function g(e,t){var n=t.find(".ff_has_formula");if(n.length){var a={},i={};mexp.addToken(h);var r=function(){jQuery.each(n,(function(n,a){var i=jQuery(a),r=i.data("calculation_formula"),f=function(e,t){for(var n,a=[],i=RegExp(e,"g");n=i.exec(t);)delete n.input,a.push(n);return a}(/{(.*?)}/g,r),d={};jQuery.each(f,(function(e,n){var a=n[0];jQuery.each(["{input.","{select.","{checkbox.","{radio.","{repeat.","{payment."],(function(e,n){if(function(e,t){return-1!==e.indexOf(t)}(a,n)){var i=(p=a,m=new RegExp(n+"|}","g"),p.replace(m,"")),r=0;if("{select."===n)r=c(i);else if("{checkbox."===n)r=u(i);else if("{radio."===n)r=s(i);else if("{repeat."===n)r=l(i);else if("{payment."===n)r=function(e){var n=0,a=t.find(":input[data-name="+e+"]");if(a.length&&o(a)){var i=a[0].type;"radio"===i?n=s(e,!0):"hidden"===i?n=a.attr("data-payment_value"):"number"===i||"text"===i?n=window.ff_helper.numericVal(a):"checkbox"===i?n=u(e,!0):"select-one"===i&&(n=c(e,!0))}return n}(i);else{var f=t.find("input[name="+i+"]");o(f)&&(r=window.ff_helper.numericVal(f))}return d[a]=r,!1}var p,m}))})),jQuery.each(d,(function(e,t){t||(t=0),r=r.split(e).join(t)}));var p="";try{r=r.replace(/\n/g,""),p=mexp.eval(r),isNaN(p)&&(p="")}catch(e){console.log(e,a)}if("text"==i[0].type){var m=e(i),v=m.val(),h=window.ff_helper.formatCurrency(m,p);if(m.val(h).prop("defaultValue",h),""==v)return;v!=h&&m.trigger("change")}else i.text(p)}))};t.find("input[type=number],input[data-calc_value],select[data-calc_value],.ff_numeric,.ff_payment_item").on("change keyup",r),r(),t.on("do_calculation",(function(){r()}))}function o(e){return!e.closest(".ff_excluded.has-conditions").length}function f(n){var a=0,i=t.find(n);return i.closest(".ff_excluded.has-conditions").length||e.each(i,(function(t,n){var i=e(n).attr("data-calc_value");i&&!isNaN(i)&&(a+=Number(i))})),a}function l(n){var f=0,l=n.split("."),s=!1;l.length>1&&(n=l[0],s=l[1]);var c=t.find("table[data-root_name="+n+"]");if(a[n]||(a[n]=!0,c.on("repeat_change",(function(){r()}))),o(c))if(s){var u=c.find("tbody tr td:nth-child("+s+")");e.each(u,(function(t,a){var o=e(a).find(":input"),l=n+"_"+s+"_"+o.attr("id");i[l]||(i[l]=!0,o.on("change",(function(){r()})));var c=0;c="select"===o.attr("type")?parseFloat(o.find("option:selected").attr("data-calc_value")):parseFloat(o.val()),isNaN(c)||(f+=c)})),f&&(f=f.toFixed(2))}else f=c.find("tbody tr").length;return f}function s(e){var n=arguments.length>1&&void 0!==arguments[1]&&arguments[1],a=0,i=t.find("input[name="+e+"]:checked");return n?i.attr("data-payment_value"):(o(i)&&(a=i.attr("data-calc_value")||0),a)}function c(e){var n;return arguments.length>1&&void 0!==arguments[1]&&arguments[1]?t.find("select[name="+e+"] option:selected").data("payment_value"):(n=f("select[data-name="+e+"] option:selected"),t.find("select[data-name="+e+"]").attr("data-calc_value",n),n)}function u(e){if(!(arguments.length>1&&void 0!==arguments[1]&&arguments[1]))return f("input[data-name="+e+"]:checked");var n=t.find(":input[data-name="+e+"]").data("group_id"),a=t.find('input[data-group_id="'+n+'"]:checked'),i=0;return a.each((function(e,t){var n=jQuery(t).data("payment_value");n&&(i+=parseFloat(n))})),i}}(m=jQuery)(document.body).on("fluentform_init",(function(n,a,i){if(a.attr("data-form_instance"),i){i.form_id_selector;var r="."+i.form_instance;if(function(e,t,n,a,i){var r=function(){jQuery.fn.fileupload&&t.find('input[type="file"]').each((function(r,c){var u,d=e(this);u=e("<div/>",{class:"ff-uploaded-list",style:"font-size:12px; margin-top: 15px;"}),d.closest("div").append(u);var p=u.width(),m=n.rules[d.prop("name")],v=m.max_file_count.value;"max_file_count"in m&&(m.max_file_count.remaining=Number(v));var h="";function g(e){var n=d.prop("name");t.trigger("show_element_error",{element:n,message:e})}function y(a,r){if(r&&r.files&&r.files.length){if(t.find(".ff-upload-preview-elem").remove(),"max_file_count"in m){e(i+"_errors").empty(),e(this).closest("div").find(".error").html("");var o=m.max_file_count.remaining;if(!o||r.files.length>o){var f="Maximum 1 file is allowed!";return f=v>1?"Maximum "+v+" files are allowed!":f,m.max_file_count&&m.max_file_count.message&&(f=m.max_file_count.message),g(f),!1}}var s=l(r.files[0],n.rules[d.prop("name")]);return!s.length||(g(s.join(", ")),!1)}}"allowed_file_types"in m?(h=m.allowed_file_types.value.join("|"),d.prop("accept","."+h.replace(/\|/g,",."))):(h=m.allowed_image_types.value.join("|"))?d.prop("accept","."+h.replace(/\|/g,",.")):d.prop("accept","image/*");var _=e(c);d.fileupload({dataType:"json",dropZone:d.closest(".ff-el-group"),url:a.ajaxUrl,formData:function(e){var t=e.serializeArray();return t.push({name:"action",value:"fluentform_file_upload"}),t.push({name:"formId",value:n.id}),t},change:y,add:function(t,n){if(y(0,n)){var i=e("<div/>",{class:"ff-upload-preview"});n.context=i;var r=e("<div/>",{class:"ff-upload-thumb"}),l=e("<div/>",{class:"ff-upload-details"}),s=e("<div/>",{class:"ff-upload-preview-img",style:"background-image: url('".concat(o(n.files[0]),"');")}),c=e("<div>",{class:"ff-upload-error",style:"color:red;"}),d=e("<span/>",{html:a.upload_start_txt,class:"ff-upload-progress-inline-text ff-inline-block"}),m=e('\n\t\t\t\t\t\t\t\t\t<div class="ff-upload-progress-inline ff-el-progress">\n\t\t\t\t\t\t\t\t\t\t<div class="ff-el-progress-bar"></div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t'),v=e("<div/>",{class:"ff-upload-filename",text:n.files[0].name}),h=e("<span/>",{"data-href":"#","data-attachment-id":"",html:"&times;",class:"ff-upload-remove"}),g=e("<div>",{class:"ff-upload-filesize ff-inline-block",html:f(n.files[0].size)});r.append(s),l.append(v,m,d,g,c,h),i.append(r,l),u.append(i),v.css({maxWidth:p-91+"px"}),n.submit(),n.context.addClass("ff_uploading")}},progress:function(e,t){var n=parseInt(t.loaded/t.total*100,10);t.context.find(".ff-el-progress-bar").css("width",n+"%"),t.context.find(".ff-upload-progress-inline-text").text(a.uploading_txt)},done:function(e,n){if(n.context.removeClass("ff_uploading"),n.result&&"data"in n.result&&"files"in n.result.data)"error"in n.result.data.files[0]?(g("Upload Error: "+n.result.data.files[0].error),n.context.remove()):(n.context.find(".ff-upload-progress-inline-text").text(a.upload_completed_txt),m.max_file_count.remaining-=1,n.context.attr("data-src",n.result.data.files[0].url),n.context.find(".ff-upload-remove").attr({"data-href":n.result.data.files[0].file,"data-attachment-id":n.result.data.files[0].attachment_id}),n.context.addClass("ff_uploading_complete"),t.find("input[name="+_.data("name")+"]").trigger("change"));else{var i="Sorry! The upload failed for some unknown reason.";if(n.messages){var r=Object.keys(n.messages);r.length&&(i=n.messages[r[0]])}g(i),n.context.remove()}},fail:function(t,n){var a=[];n.context.remove(),n.jqXHR.responseJSON&&n.jqXHR.responseJSON.errors?e.each(n.jqXHR.responseJSON.errors,(function(t,n){"object"==s(n)?e.each(n,(function(e,t){a.push(t)})):a.push(n)})):n.jqXHR.responseText?a.push(n.jqXHR.responseText):a.push("Something is wrong when uploading the file! Please try again"),g(a.join(", "))}}),_.on("change_remaining",(function(e,t){m.max_file_count.remaining+=t}))}))},o=function(e){if(e.type.match("image"))return URL.createObjectURL(e);var t=document.createElement("canvas");t.width=60,t.height=60,t.style.zIndex=8,t.style.position="absolute",t.style.border="1px solid";var n=t.getContext("2d");return n.fillStyle="rgba(0, 0, 0, 0.2)",n.fillRect(0,0,60,60),n.font="13px Arial",n.fillStyle="white",n.textAlign="center",n.fillText(e.name.substr(e.name.lastIndexOf(".")+1),30,30,60),t.toDataURL()},f=function(e){return e<1024?e+"bytes":e>=1024&&e<=1048576?(e/1024).toFixed(1)+"KB":e>1048576?(e/1048576).toFixed(1)+"MB":void 0},l=function(e,t){var n=[],a="",i="";if("allowed_file_types"in t?(a=t.allowed_file_types.value,i=t.allowed_file_types.message):"allowed_image_types"in t&&(a=t.allowed_image_types.value,i=t.allowed_image_types.message),a){var r=new RegExp("("+a.join("|")+")","i"),o=e.name.split(".").pop();o=o.toLowerCase(),r.test(o)||n.push(i)}return"max_file_size"in t&&e.size>t.max_file_size.value&&n.push(t.max_file_size.message),n};r(),t.find(".ff-uploaded-list").on("click",".ff-upload-remove",(function(t){t.preventDefault();var n=e(this),i=n.closest(".ff-uploaded-list"),r=i.closest(".ff-el-input--content").find("input[type=file]"),o=n.attr("data-href"),f=n.attr("data-attachment-id");"#"==o?(n.closest(".ff-upload-preview").remove(),i.find(".ff-upload-preview").length||i.siblings(".ff-upload-progress").addClass("ff-hidden"),r.trigger("change_remaining",1)):e.post(a.ajaxUrl,{path:o,attachment_id:f,action:"fluentform_delete_uploaded_file"}).then((function(e){n.closest(".ff-el-input--content").find("input"),r.trigger("change_remaining",1),n.closest(".ff-upload-preview").remove(),i.find(".ff-upload-preview").length||i.siblings(".ff-upload-progress").addClass("ff-hidden"),r.trigger("change")}))})),e(document.body).on("fluentform_reset",(function(){r()}))}(m,a,i,window.fluentFormVars,r),t(a),function(e,t){var n=t.find(".fluentform .js-repeat");e.each(n,(function(t,n){var a=e(n);if(a.find(".ff-t-cell").length>1){var i=a.find(".ff-el-group").height()-a.find(".ff-el-group").find(".ff-el-input--content").height();a.find(".js-repeat-buttons").css("margin-top",i+"px")}var r=a.find(".ff-el-group").find(".ff-el-input--content .ff-el-form-control").outerHeight();a.find(".ff-el-repeat-buttons").height(r)}))}(m,a),l(m,a,i,window.fluentFormVars),g(m,a),function(e,t){var n=t.find(".jss-ff-el-ratings");n.length&&e.each(n,(function(t,n){var a=e(n);a.find("label.active").prevAll().addClass("active"),a.on("mouseenter","label",(function(t){var n=e(this),a="[data-id="+n.find("input").attr("id")+"]";n.addClass("active"),n.prevAll().addClass("active"),n.nextAll().removeClass("active"),n.closest(".ff-el-input--content").find(".ff-el-rating-text").css("display","none"),n.closest(".ff-el-input--content").find(a).css("display","inline-block")})).on("click","label",(function(t){var n=e(this).find(".jss-ff-svg");n.addClass("scale"),n.addClass("scalling"),setTimeout((function(e){n.removeClass("scalling"),n.removeClass("scale")}),150)})).on("mouseleave",(function(t){var n=e(this),a="[data-id="+n.find("input:checked").attr("id")+"]",i=n.find("input:checked").parent("label");i.length?(i.addClass("active"),i.prevAll().addClass("active"),i.nextAll().removeClass("active")):n.find("label").removeClass("active"),n.closest(".ff-el-input--content").find(".ff-el-rating-text").css("display","none"),n.closest(".ff-el-input--content").find(a).css("display","inline-block")}))}))}(m,a),e(m,a),a.hasClass("ff-form-has-steps")){var o=p(m,a,window.fluentFormVars,r);o.init(),a.on("update_slider",(function(e,t){o.updateSlider(t.goBackToStep,t.animDuration,t.isScrollTop,t.actionType)}))}a.hasClass("ff_has_dynamic_smartcode")&&(a.on("ff_render_dynamic_smartcodes",(function(e,t){f(m(t))})),a.on("keyup change",":input",(function(){f(a)})),f(a))}else console.log("No Fluent form JS vars found!");function f(e){jQuery.each(e.find(".ff_dynamic_value"),(function(e,t){var n=m(t).data("ref");if("payment_summary"!=n){var i=a.find('.ff-el-form-control[name="'+n+'"]'),r=" ";i.length||(i=a.find('.ff-field_container[data-name="'+n+'"]').find("input")),i.length||((i=a.find('*[name="'+n+'"]:checked')).length||(i=a.find('*[name="'+n+'[]"]:checked'),r=", "),i.length||(i=a.find('*[name="'+n+'[]"]').find("option:selected"),r=", "));var o=[];m.each(i,(function(){var e=m(this).val();e&&o.push(e)}));var f="";f=o.length?o.join(r):m(t).data("fallback"),m(this).html(f)}else a.trigger("calculate_payment_summary",{element:m(t)})}))}})),(v=String.prototype).startsWith||(v.startsWith=function(e,t){return t=!t||t<0?0:+t,this.substring(t,t+e.length)===e}),v.endsWith||(v.endsWith=function(e,t){return(void 0===t||t>this.length)&&(t=this.length),this.substring(t-e.length,t)===e}),v.includes||(v.includes=function(e,t){if(e instanceof RegExp)throw TypeError("first argument must not be a RegExp");return void 0===t&&(t=0),-1!==this.indexOf(e,t)})})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./resources/assets/public/Pro/_ConditionClass.js":
+/*!********************************************************!*\
+  !*** ./resources/assets/public/Pro/_ConditionClass.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _wrapRegExp() { _wrapRegExp = function _wrapRegExp(e, r) { return new BabelRegExp(e, void 0, r); }; var e = RegExp.prototype, r = new WeakMap(); function BabelRegExp(e, t, p) { var o = new RegExp(e, t); return r.set(o, p || r.get(e)), _setPrototypeOf(o, BabelRegExp.prototype); } function buildGroups(e, t) { var p = r.get(t); return Object.keys(p).reduce(function (r, t) { var o = p[t]; if ("number" == typeof o) r[t] = e[o];else { for (var i = 0; void 0 === e[o[i]] && i + 1 < o.length;) i++; r[t] = e[o[i]]; } return r; }, Object.create(null)); } return _inherits(BabelRegExp, RegExp), BabelRegExp.prototype.exec = function (r) { var t = e.exec.call(this, r); if (t) { t.groups = buildGroups(t, this); var p = t.indices; p && (p.groups = buildGroups(p, this)); } return t; }, BabelRegExp.prototype[Symbol.replace] = function (t, p) { if ("string" == typeof p) { var o = r.get(this); return e[Symbol.replace].call(this, t, p.replace(/\$<([^>]+)>/g, function (e, r) { var t = o[r]; return "$" + (Array.isArray(t) ? t.join("$") : t); })); } if ("function" == typeof p) { var i = this; return e[Symbol.replace].call(this, t, function () { var e = arguments; return "object" != _typeof(e[e.length - 1]) && (e = [].slice.call(e)).push(buildGroups(e, i)), p.apply(this, e); }); } return e[Symbol.replace].call(this, t, p); }, _wrapRegExp.apply(this, arguments); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var ConditionApp = /*#__PURE__*/function () {
+  function ConditionApp(fields, formData) {
+    _classCallCheck(this, ConditionApp);
+    this.fields = fields;
+    this.formData = formData;
+    this.counter = 0;
+    this.field_statues = {};
+  }
+  _createClass(ConditionApp, [{
+    key: "setFields",
+    value: function setFields(fields) {
+      this.fields = fields;
+    }
+  }, {
+    key: "setFormData",
+    value: function setFormData(data) {
+      this.formData = data;
+    }
+  }, {
+    key: "getCalculatedStatuses",
+    value: function getCalculatedStatuses() {
+      for (var _i = 0, _Object$keys = Object.keys(this.fields); _i < _Object$keys.length; _i++) {
+        var key = _Object$keys[_i];
+        var item = this.fields[key];
+        this.field_statues[key] = this.evaluate(item, key);
+      }
+      return this.field_statues;
+    }
+  }, {
+    key: "evaluate",
+    value: function evaluate(item, key) {
+      var _this = this;
+      var mainResult = false;
+      if (item.status) {
+        this.counter++;
+        var type = item.type;
+        var result = 1;
+        if (type == 'any') {
+          result = 0;
+        }
+        item.conditions.forEach(function (condition) {
+          var evalValue = _this.getItemEvaluateValue(condition, _this.formData[condition.field]);
+          if (evalValue && _this.fields[condition.field] && condition.field != key) {
+            evalValue = _this.evaluate(_this.fields[condition.field], condition.field);
+          }
+          if (type == 'any') {
+            if (evalValue) {
+              result = 1;
+            }
+          } else {
+            // For All
+            if (!evalValue && result) {
+              result = false;
+            }
+          }
+        });
+        mainResult = result == 1;
+      }
+      if (item.status && item.conditions.length && !mainResult) {
+        return mainResult;
+      }
+      if (item.container_condition) {
+        mainResult = this.evaluate(item.container_condition);
+      }
+      return mainResult;
+    }
+  }, {
+    key: "getItemEvaluateValue",
+    value: function getItemEvaluateValue(item, val) {
+      val = val || null;
+      var $el = jQuery("[name='".concat(item.field, "']"));
+      if (item.operator == '=') {
+        //when condition value is empty
+        if (item.value === '') {
+          return val === null;
+        }
+        // this value can be array or string
+        if (_typeof(val) == 'object') {
+          return val !== null && val.indexOf(item.value) != -1;
+        }
+        if ($el.hasClass('ff_numeric')) {
+          return this.parseFormattedNumericValue($el, val) == this.parseFormattedNumericValue($el, item.value);
+        }
+        return val == item.value;
+      } else if (item.operator == '!=') {
+        if (_typeof(val) == 'object') {
+          return val !== null && val.indexOf(item.value) == -1;
+        }
+        if ($el.hasClass('ff_numeric')) {
+          return this.parseFormattedNumericValue($el, val) != this.parseFormattedNumericValue($el, item.value);
+        }
+        return val != item.value;
+      } else if (item.operator == '>') {
+        return val && this.parseFormattedNumericValue($el, val) > this.parseFormattedNumericValue($el, item.value);
+      } else if (item.operator == '<') {
+        return val && this.parseFormattedNumericValue($el, val) < this.parseFormattedNumericValue($el, item.value);
+      } else if (item.operator == '>=') {
+        return val && this.parseFormattedNumericValue($el, val) >= this.parseFormattedNumericValue($el, item.value);
+      } else if (item.operator == '<=') {
+        return val && this.parseFormattedNumericValue($el, val) <= this.parseFormattedNumericValue($el, item.value);
+      } else if (item.operator == 'startsWith') {
+        return val && val.startsWith(item.value);
+      } else if (item.operator == 'endsWith') {
+        return val && val.endsWith(item.value);
+      } else if (item.operator == 'contains') {
+        return val !== null && val.indexOf(item.value) != -1;
+      } else if (item.operator == 'doNotContains') {
+        return val !== null && val.indexOf(item.value) == -1;
+      } else if (item.operator == 'test_regex') {
+        var globalRegex = this.stringToRegex(item.value);
+        val = val || '';
+        return globalRegex.test(val);
+      }
+      return false;
+    }
+  }, {
+    key: "stringToRegex",
+    value: function stringToRegex(regex) {
+      var _String$match;
+      var _ref = ((_String$match = String(regex).match( /*#__PURE__*/_wrapRegExp(/^\/(.*)\/([gimsuy]*)$/, {
+          body: 1,
+          flags: 2
+        }))) === null || _String$match === void 0 ? void 0 : _String$match.groups) || {},
+        body = _ref.body,
+        flags = _ref.flags;
+      if (body) {
+        flags = flags ? flags : 'g';
+        return RegExp(body, flags);
+      }
+      return new RegExp(regex, 'g');
+    }
+  }, {
+    key: "parseFormattedNumericValue",
+    value: function parseFormattedNumericValue($el, val) {
+      if ($el.hasClass('ff_numeric')) {
+        var formatConfig = JSON.parse($el.attr('data-formatter'));
+        return currency(val, formatConfig).value;
+      }
+      return Number(val) || 0;
+    }
+  }]);
+  return ConditionApp;
+}();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ConditionApp);
+
+/***/ }),
+
+/***/ "./resources/assets/public/Pro/calculations.js":
+/*!*****************************************************!*\
+  !*** ./resources/assets/public/Pro/calculations.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   findAll: () => (/* binding */ findAll),
+/* harmony export */   getName: () => (/* binding */ getName),
+/* harmony export */   isContain: () => (/* binding */ isContain),
+/* harmony export */   mexpToken: () => (/* binding */ mexpToken)
+/* harmony export */ });
+var mexpToken = [{
+  type: 8,
+  token: 'round',
+  show: 'round',
+  value: function value(_value) {
+    var decimals = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    if (!decimals && decimals !== 0) {
+      decimals = 2;
+    }
+    _value = parseFloat(_value).toFixed(decimals);
+    return parseFloat(_value);
+  }
+}, {
+  type: 0,
+  token: 'ceil',
+  show: 'ceil',
+  value: function value(a) {
+    return Math.ceil(a);
+  }
+}, {
+  type: 0,
+  token: 'floor',
+  show: 'floor',
+  value: function value(a) {
+    return Math.floor(a);
+  }
+}, {
+  type: 0,
+  token: 'abs',
+  show: 'abs',
+  value: function value(a) {
+    return Math.abs(a);
+  }
+}, {
+  type: 8,
+  token: 'max',
+  show: 'max',
+  value: function value(a, b) {
+    if (a > b) return a;
+    return b;
+  }
+}, {
+  type: 8,
+  token: 'min',
+  show: 'min',
+  value: function value(a, b) {
+    if (a < b) return a;
+    return b;
+  }
+}];
+
+// polyfill for matchAll
+function findAll(regexPattern, sourceString) {
+  var output = [];
+  var match;
+  // make sure the pattern has the global flag
+  var regexPatternWithGlobal = RegExp(regexPattern, "g");
+  while (match = regexPatternWithGlobal.exec(sourceString)) {
+    // get rid of the string copy
+    delete match.input;
+    // store the match data
+    output.push(match);
+  }
+  return output;
+}
+function isContain(item, value) {
+  return item.indexOf(value) !== -1;
+}
+function getName(item, replace) {
+  var regx = new RegExp(replace + '|}', 'g');
+  return item.replace(regx, '');
+}
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__($, $theForm) {
+  var calculationFields = $theForm.find('.ff_has_formula');
+  if (!calculationFields.length) {
+    return;
+  }
+  var repeaterTriggerCache = {};
+  var repeaterInputsTriggerCache = {};
+  mexp.addToken(mexpToken);
+  var doCalculation = function doCalculation() {
+    jQuery.each(calculationFields, function (index, field) {
+      var $field = jQuery(field);
+      var formula = $field.data('calculation_formula');
+      var regEx = /{(.*?)}/g;
+      // let matches = [...formula.matchAll(regEx)];
+      var matches = findAll(regEx, formula);
+      var replaces = {};
+      jQuery.each(matches, function (index, match) {
+        var itemKey = match[0];
+        jQuery.each(['{input.', '{select.', '{checkbox.', '{radio.', '{repeat.', '{payment.'], function (prefixIndex, prefix) {
+          if (isContain(itemKey, prefix)) {
+            var name = getName(itemKey, prefix);
+            var value = 0;
+            if (prefix === '{select.') {
+              value = getSelectFieldValue(name);
+            } else if (prefix === '{checkbox.') {
+              value = getCheckboxValue(name);
+            } else if (prefix === '{radio.') {
+              value = getRadioFieldValue(name);
+            } else if (prefix === '{repeat.') {
+              value = getRepeatFieldValue(name);
+            } else if (prefix === '{payment.') {
+              value = getPaymentFieldValue(name);
+            } else {
+              var $el = $theForm.find('input[name=' + name + ']');
+              if (isAccessible($el)) {
+                value = window.ff_helper.numericVal($el);
+              }
+            }
+            replaces[itemKey] = value;
+            return false; // to break out of this loop
+          }
+        });
+      });
+      jQuery.each(replaces, function (key, value) {
+        if (!value) {
+          value = 0;
+        }
+        formula = formula.split(key).join(value);
+      });
+      var calculatedValue = '';
+      try {
+        formula = formula.replace(/\n/g, "");
+        calculatedValue = mexp.eval(formula);
+        if (isNaN(calculatedValue)) {
+          calculatedValue = '';
+        }
+      } catch (error) {
+        console.log(error, field);
+      }
+      if ($field[0].type == 'text') {
+        var $fieldDom = $($field);
+        var prevValue = $fieldDom.val();
+        var formattedValue = window.ff_helper.formatCurrency($fieldDom, calculatedValue);
+        $fieldDom.val(formattedValue).prop('defaultValue', formattedValue);
+        if (prevValue == '') {
+          return;
+        }
+        if (prevValue != formattedValue) {
+          $fieldDom.trigger('change');
+        }
+      } else {
+        $field.text(calculatedValue);
+      }
+    });
+  };
+  function isAccessible($el) {
+    if ($el.closest('.ff_excluded.has-conditions').length) {
+      return false;
+    }
+    return true;
+  }
+  function getDataCalcValue(selector) {
+    var itemValue = 0;
+    var selectedItems = $theForm.find(selector);
+    if (selectedItems.closest('.ff_excluded.has-conditions').length) {
+      return itemValue;
+    }
+    $.each(selectedItems, function (indexItem, item) {
+      var eachItemValue = $(item).attr('data-calc_value');
+      if (eachItemValue && !isNaN(eachItemValue)) {
+        itemValue += Number(eachItemValue);
+      }
+    });
+    return itemValue;
+  }
+
+  /**
+   * Init Calculation input number fild
+   */
+  var initNumberCalculations = function initNumberCalculations() {
+    $theForm.find('input[type=number],input[data-calc_value],select[data-calc_value],.ff_numeric,.ff_payment_item').on('change keyup', doCalculation);
+    doCalculation();
+    $theForm.on('do_calculation', function () {
+      doCalculation();
+    });
+  };
+  function getRepeatFieldValue(name) {
+    var value = 0;
+    // We may have column index here
+    var splits = name.split('.');
+    var indexName = false;
+    if (splits.length > 1) {
+      name = splits[0];
+      indexName = splits[1];
+    }
+    var $targetTable = $theForm.find('table[data-root_name=' + name + ']');
+    if (!repeaterTriggerCache[name]) {
+      repeaterTriggerCache[name] = true;
+      $targetTable.on('repeat_change', function () {
+        doCalculation();
+      });
+    }
+    if (isAccessible($targetTable)) {
+      if (!indexName) {
+        value = $targetTable.find('tbody tr').length;
+      } else {
+        var tds = $targetTable.find('tbody tr td:nth-child(' + indexName + ')');
+        $.each(tds, function (tdIndex, td) {
+          var $tdInput = $(td).find(':input');
+          var cacheName = name + '_' + indexName + '_' + $tdInput.attr('id');
+          if (!repeaterInputsTriggerCache[cacheName]) {
+            repeaterInputsTriggerCache[cacheName] = true;
+            $tdInput.on('change', function () {
+              doCalculation();
+            });
+          }
+          var parsedValue = 0;
+          if ($tdInput.attr('type') === 'select') {
+            parsedValue = parseFloat($tdInput.find('option:selected').attr('data-calc_value'));
+          } else {
+            parsedValue = parseFloat($tdInput.val());
+          }
+          if (!isNaN(parsedValue)) {
+            value += parsedValue;
+          }
+        });
+        if (value) {
+          value = value.toFixed(2);
+        }
+      }
+    }
+    return value;
+  }
+  function getPaymentFieldValue(name) {
+    var value = 0;
+    var $elem = $theForm.find(':input[data-name=' + name + ']');
+    if ($elem.length && isAccessible($elem)) {
+      var elementType = $elem[0].type;
+      if (elementType === 'radio') {
+        value = getRadioFieldValue(name, true);
+      } else if (elementType === 'hidden') {
+        value = $elem.attr('data-payment_value');
+      } else if (elementType === 'number' || elementType === 'text') {
+        value = window.ff_helper.numericVal($elem);
+      } else if (elementType === 'checkbox') {
+        value = getCheckboxValue(name, true);
+      } else if (elementType === 'select-one') {
+        value = getSelectFieldValue(name, true);
+      }
+    }
+    return value;
+  }
+  function getRadioFieldValue(name) {
+    var forPaymentField = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var value = 0;
+    var $el = $theForm.find('input[name=' + name + ']:checked');
+    if (forPaymentField) {
+      return $el.attr('data-payment_value');
+    }
+    if (isAccessible($el)) {
+      value = $el.attr('data-calc_value') || 0;
+    }
+    return value;
+  }
+  function getSelectFieldValue(name) {
+    var forPaymentField = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var value = 0;
+    if (forPaymentField) {
+      return $theForm.find('select[name=' + name + '] option:selected').data('payment_value');
+    }
+    value = getDataCalcValue('select[data-name=' + name + '] option:selected');
+    $theForm.find('select[data-name=' + name + ']').attr('data-calc_value', value);
+    return value;
+  }
+  function getCheckboxValue(name) {
+    var forPaymentField = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (!forPaymentField) {
+      return getDataCalcValue('input[data-name=' + name + ']:checked');
+    }
+    var $elem = $theForm.find(':input[data-name=' + name + ']');
+    var groupId = $elem.data('group_id');
+    var groups = $theForm.find('input[data-group_id="' + groupId + '"]:checked');
+    var groupTotal = 0;
+    groups.each(function (index, group) {
+      var itemPrice = jQuery(group).data('payment_value');
+      if (itemPrice) {
+        groupTotal += parseFloat(itemPrice);
+      }
+    });
+    return groupTotal;
+  }
+  initNumberCalculations();
+}
+
+/***/ }),
+
+/***/ "./resources/assets/public/Pro/dom-net-promoter.js":
+/*!*********************************************************!*\
+  !*** ./resources/assets/public/Pro/dom-net-promoter.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var initNetPromoter = function initNetPromoter($, $form) {
+  /**
+   * Rating element
+   */
+  var netPromoterDoms = $form.find(".jss-ff-el-net-promoter");
+  if (!netPromoterDoms.length) {
+    return;
+  }
+  $.each(netPromoterDoms, function (index, netPromoterDom) {
+    var $netPromoterDoms = $(netPromoterDom);
+    // Default selected icons
+    // $netPromoterDoms.find("label.active").prevAll().addClass("active");
+    $netPromoterDoms.on('click', 'label', function (e) {
+      var $this = $(this);
+      /**
+       * Mark active to all previous and currently hovered elements
+       * And mark inactive to the next ones!
+       */
+      $this.addClass("active");
+      $this.prevAll().removeClass("active");
+      $this.nextAll().removeClass("active");
+    });
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (initNetPromoter);
+
+/***/ }),
+
+/***/ "./resources/assets/public/Pro/dom-rating.js":
+/*!***************************************************!*\
+  !*** ./resources/assets/public/Pro/dom-rating.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__($, $form) {
+  /**
+   * Rating element
+   */
+  var ratingDoms = $form.find(".jss-ff-el-ratings");
+  if (!ratingDoms.length) {
+    return;
+  }
+  $.each(ratingDoms, function (index, ratingDom) {
+    var $ratingDom = $(ratingDom);
+    // Default selected icons
+    $ratingDom.find("label.active").prevAll().addClass("active");
+    $ratingDom.on('mouseenter', 'label', function (e) {
+      var $this = $(this);
+      var targetId = $this.find('input').attr('id');
+      var ratingTextSelector = "[data-id=" + targetId + "]";
+
+      /**
+       * Mark active to all previous and currently hovered elements
+       * And mark inactive to the next ones!
+       */
+      $this.addClass("active");
+      $this.prevAll().addClass("active");
+      $this.nextAll().removeClass("active");
+      $this.closest(".ff-el-input--content").find(".ff-el-rating-text").css('display', 'none');
+      $this.closest(".ff-el-input--content").find(ratingTextSelector).css("display", "inline-block");
+    })
+    // When clicked on the icon
+    .on('click', 'label', function (e) {
+      var $this = $(this);
+      var $icon = $this.find(".jss-ff-svg");
+      $icon.addClass('scale');
+      $icon.addClass('scalling');
+      setTimeout(function (_) {
+        $icon.removeClass('scalling');
+        $icon.removeClass('scale');
+      }, 150);
+    })
+    // When mouse leaved from the rating icons
+    .on('mouseleave', function (e) {
+      var $this = $(this);
+      var targetId = $this.find("input:checked").attr("id");
+      var ratingTextSelector = "[data-id=" + targetId + "]";
+      var checkedStar = $this.find("input:checked").parent("label");
+
+      /**
+       * Only checked item's prior elements will be marked
+       * And rest will be unmarked
+       */
+      if (!checkedStar.length) {
+        $this.find('label').removeClass('active');
+      } else {
+        checkedStar.addClass("active");
+        checkedStar.prevAll().addClass("active");
+        checkedStar.nextAll().removeClass("active");
+      }
+      $this.closest(".ff-el-input--content").find(".ff-el-rating-text").css("display", "none");
+      $this.closest(".ff-el-input--content").find(ratingTextSelector).css("display", "inline-block");
+    });
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/public/Pro/dom-repeat.js":
+/*!***************************************************!*\
+  !*** ./resources/assets/public/Pro/dom-repeat.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   initRepeatButtons: () => (/* binding */ initRepeatButtons),
+/* harmony export */   initRepeater: () => (/* binding */ initRepeater)
+/* harmony export */ });
+var initRepeatButtons = function initRepeatButtons($, $form) {
+  var repeat = $form.find('.fluentform .js-repeat'); // this is the old version
+  $.each(repeat, function (index, repeatItem) {
+    var $repeatItem = $(repeatItem);
+    var repeatCols = $repeatItem.find('.ff-t-cell').length;
+    if (repeatCols > 1) {
+      var containerHeight = $repeatItem.find('.ff-el-group').height();
+      var elementHeight = $repeatItem.find('.ff-el-group').find('.ff-el-input--content').height();
+      var marginTop = containerHeight - elementHeight;
+      $repeatItem.find('.js-repeat-buttons').css('margin-top', marginTop + 'px');
+    }
+    var elementInputHeight = $repeatItem.find('.ff-el-group').find('.ff-el-input--content .ff-el-form-control').outerHeight();
+    $repeatItem.find('.ff-el-repeat-buttons').height(elementInputHeight);
+  });
+};
+var registerRepeaterButtonsOldVersion = function registerRepeaterButtonsOldVersion($theForm) {
+  $theForm.on('click', '.js-repeat .repeat-plus', function (e) {
+    var btnPlus = jQuery(this);
+    var repeatParent = btnPlus.closest('.ff-el-repeat');
+    var maxRepeat = parseInt(repeatParent.data('max_repeat'));
+    var currentRepeatItems = repeatParent.find('.ff-t-cell:first-child .ff-el-input--content > input').length;
+    if (maxRepeat && maxRepeat <= currentRepeatItems) {
+      return;
+    }
+    if (maxRepeat && maxRepeat - currentRepeatItems == 1) {
+      repeatParent.find('.repeat-plus').hide();
+    }
+    var btnSet = btnPlus.closest('div');
+    var index = btnSet.index();
+    var itemLength = btnPlus.closest('.ff-el-input--content').find('.ff-t-cell').length;
+    btnPlus.closest('.ff-el-input--content').find('.ff-t-cell').each(function (i, div) {
+      var el = jQuery(this).find('.ff-el-form-control:last-child');
+      var tabIndex = el.attr('tabindex');
+      var cloned = el.clone();
+      var newId = 'ffrpt-' + new Date().getTime() + i;
+      var itemProp = {
+        value: '',
+        id: newId
+      };
+      if (tabIndex) {
+        itemProp.tabIndex = parseInt(tabIndex) + itemLength;
+      }
+      cloned.prop(itemProp);
+      cloned.insertAfter(el);
+    });
+    btnSet.clone().insertAfter(btnSet);
+    btnPlus.closest('.ff-el-input--content').find('.ff-t-cell').eq(0).find("input:eq(".concat(index + 1, ")")).focus();
+  });
+  $theForm.on('click', '.js-repeat .repeat-minus', function (e) {
+    var isDeleted = false;
+    var btnMinus = jQuery(this);
+    var btnSet = btnMinus.closest('div');
+    var repeatParent = btnMinus.closest('.ff-el-repeat');
+    repeatParent.find('.repeat-plus').show();
+    btnMinus.closest('.ff-el-input--content').find('.ff-t-cell').each(function () {
+      var index = btnSet.index();
+      var el = jQuery(this).find('.ff-el-form-control:eq(' + index + ')');
+      if (btnSet.siblings().length) {
+        isDeleted = el.remove().length;
+      }
+    });
+    isDeleted && btnSet.remove();
+  });
+};
+var registerRepeaterHandler = function registerRepeaterHandler($theForm) {
+  // Get the screen type from local storage
+  var screenType = window.localStorage.getItem('ff_window_type');
+
+  // Add screen type classes
+  if (jQuery('.ff_form_preview').length) {
+    jQuery('.ff_flexible_table').addClass(screenType);
+  }
+
+  // Add mobile class to repeater fields on screen mobile view
+  $theForm.on('screen-change', function (e, width) {
+    if (jQuery('.ff_form_preview').length) {
+      if (width === '375px') {
+        jQuery('.ff_flexible_table').addClass('mobile');
+      } else {
+        jQuery('.ff_flexible_table').removeClass('mobile');
+      }
+    }
+  });
+  $theForm.on('click', '.js-repeater .repeat-plus', function (e) {
+    var $btnPlus = jQuery(this);
+    var $table = $btnPlus.closest('table');
+    var $tr = $btnPlus.closest('tr');
+    var maxRepeat = parseInt($table.attr('data-max_repeat'));
+    var existingCount = $table.find('tbody tr').length;
+    if (maxRepeat && existingCount == maxRepeat) {
+      $table.addClass('repeat-maxed');
+      return;
+    }
+    var $freshCopy = $tr.clone();
+    $freshCopy.find('td').each(function (i, td) {
+      var el = jQuery(this).find('.ff-el-form-control:last-child');
+      var newId = 'ffrpt-' + new Date().getTime() + i;
+      var itemProp = {
+        value: el.attr('data-default') || '',
+        id: newId
+      };
+      el.prop(itemProp);
+      var dataMask = el.attr('data-mask');
+      if (dataMask) {
+        el.mask(dataMask);
+      }
+    });
+    $freshCopy.insertAfter($tr);
+
+    // Now let's fix the name
+    var rootName = $table.attr('data-root_name');
+    var firstTabIndex = 0;
+    $table.find('tbody tr').each(function (i, td) {
+      var els = jQuery(this).find('.ff-el-form-control');
+      els.each(function (index, el) {
+        var $el = jQuery(el);
+        if (i == 0) {
+          firstTabIndex = $el.attr('tabindex');
+        }
+        $el.prop({
+          'name': rootName + '[' + i + '][]'
+        });
+        $el.attr('data-name', rootName + '_' + index + '_' + i);
+        if (firstTabIndex) {
+          $el.attr('tabindex', firstTabIndex);
+        }
+      });
+    });
+    $freshCopy.find('.ff-el-form-control')[0].focus();
+    $table.trigger('repeat_change');
+    if (maxRepeat && existingCount + 1 == maxRepeat) {
+      $table.addClass('repeat-maxed');
+    }
+  });
+  $theForm.on('click', '.js-repeater .repeat-minus', function (e) {
+    var $btnMinus = jQuery(this);
+    var $table = $btnMinus.closest('table');
+    var existingCount = $table.find('tbody tr').length;
+    if (existingCount == 1) {
+      return;
+    }
+    $btnMinus.closest('tr').remove();
+    $table.removeClass('repeat-maxed');
+
+    // Now let's fix the name
+    var rootName = $table.attr('data-root_name');
+    $table.find('tbody tr').each(function (i, td) {
+      var els = jQuery(this).find('.ff-el-form-control');
+      els.each(function (index, el) {
+        jQuery(el).prop({
+          'name': rootName + '[' + i + '][]'
+        });
+      });
+    });
+    $table.trigger('repeat_change');
+  });
+};
+var initRepeater = function initRepeater($theForm) {
+  registerRepeaterButtonsOldVersion($theForm);
+  registerRepeaterHandler($theForm);
+};
+
+
+/***/ }),
+
+/***/ "./resources/assets/public/Pro/file-uploader.js":
+/*!******************************************************!*\
+  !*** ./resources/assets/public/Pro/file-uploader.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__($, $form, form, fluentFormVars, formSelector) {
+  /**
+   * Register file uploaders
+   * @return {void}
+   */
+  var initUploader = function initUploader() {
+    if (!jQuery.fn.fileupload) {
+      return;
+    }
+    $form.find('input[type="file"]').each(function (key, el) {
+      var element = $(this),
+        uploadedList;
+
+      // Set files thumbnail list container
+      uploadedList = $('<div/>', {
+        "class": 'ff-uploaded-list',
+        style: 'font-size:12px; margin-top: 15px;'
+      });
+      element.closest('div').append(uploadedList);
+      // original width for preview filename ellipsis
+      var maxWidth = uploadedList.width();
+
+      // Set maximum allowed files count protection
+      var rules = form.rules[element.prop('name')];
+      var maxFiles = rules['max_file_count']['value'];
+      if ('max_file_count' in rules) {
+        rules['max_file_count']['remaining'] = Number(maxFiles);
+      }
+
+      // Set html accept property for file types
+      var acceptedFileTypes = '';
+      if ('allowed_file_types' in rules) {
+        acceptedFileTypes = rules.allowed_file_types.value.join('|');
+        element.prop('accept', '.' + acceptedFileTypes.replace(/\|/g, ',.'));
+      } else {
+        acceptedFileTypes = rules.allowed_image_types.value.join('|');
+        if (acceptedFileTypes) {
+          element.prop('accept', '.' + acceptedFileTypes.replace(/\|/g, ',.'));
+        } else {
+          element.prop('accept', 'image/*');
+        }
+      }
+      function showUploadError(msg) {
+        var elName = element.prop('name');
+        $form.trigger('show_element_error', {
+          element: elName,
+          message: msg
+        });
+      }
+      function changeValidation(e, data) {
+        if (!data || !data.files || !data.files.length) {
+          return;
+        }
+        $form.find('.ff-upload-preview-elem').remove();
+        // return true;
+        if ('max_file_count' in rules) {
+          $(formSelector + '_errors').empty();
+          $(this).closest('div').find('.error').html('');
+          var remaining = rules['max_file_count']['remaining'];
+          if (!remaining || data.files.length > remaining) {
+            var msg = 'Maximum 1 file is allowed!';
+            msg = maxFiles > 1 ? 'Maximum ' + maxFiles + ' files are allowed!' : msg;
+            if (rules.max_file_count && rules.max_file_count.message) {
+              msg = rules.max_file_count.message;
+            }
+            showUploadError(msg);
+            return false;
+          }
+        }
+        var validationErrors = validateFile(data.files[0], form.rules[element.prop('name')]);
+        if (validationErrors.length) {
+          showUploadError(validationErrors.join(', '));
+          return false;
+        }
+        return true;
+      }
+      function getFormData($form) {
+        var formData = $form.serializeArray();
+        formData.push({
+          name: 'action',
+          value: 'fluentform_file_upload'
+        });
+        formData.push({
+          name: 'formId',
+          value: form.id
+        });
+        return formData;
+      }
+      var $el = $(el);
+
+      // Init the uploader
+      element.fileupload({
+        dataType: 'json',
+        dropZone: element.closest('.ff-el-group'),
+        url: fluentFormVars.ajaxUrl,
+        formData: getFormData,
+        change: changeValidation,
+        add: function add(e, data) {
+          if (!changeValidation(e, data)) {
+            return;
+          }
+          var previewContainer = $('<div/>', {
+            "class": 'ff-upload-preview'
+          });
+          data.context = previewContainer;
+          var previewThumb = $('<div/>', {
+            "class": 'ff-upload-thumb'
+          });
+          var previewDetails = $('<div/>', {
+            "class": 'ff-upload-details'
+          });
+          var thumb = $('<div/>', {
+            "class": 'ff-upload-preview-img',
+            style: "background-image: url('".concat(getThumbnail(data.files[0]), "');")
+          });
+          var errorInline = $('<div>', {
+            "class": 'ff-upload-error',
+            style: 'color:red;'
+          });
+          var fileProgress = $('<span/>', {
+            html: fluentFormVars.upload_start_txt,
+            "class": 'ff-upload-progress-inline-text ff-inline-block'
+          });
+
+          // Set inline progress bar
+          var progressBarInline = $("\n\t\t\t\t\t\t\t\t\t<div class=\"ff-upload-progress-inline ff-el-progress\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"ff-el-progress-bar\"></div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t");
+          var fileName = $('<div/>', {
+            "class": 'ff-upload-filename',
+            text: data.files[0].name
+          });
+          var removeBtn = $('<span/>', {
+            'data-href': '#',
+            'data-attachment-id': '',
+            'html': '&times;',
+            'class': 'ff-upload-remove'
+          });
+          var fileSize = $('<div>', {
+            "class": 'ff-upload-filesize ff-inline-block',
+            html: getFileSize(data.files[0].size)
+          });
+          previewThumb.append(thumb);
+          previewDetails.append(fileName, progressBarInline, fileProgress, fileSize, errorInline, removeBtn);
+          previewContainer.append(previewThumb, previewDetails);
+          uploadedList.append(previewContainer);
+
+          // set width for filename container
+          // filename larger than it's container will truncate
+          fileName.css({
+            maxWidth: maxWidth - 91 // width of left image area
+            + 'px'
+          });
+          data.submit();
+          data.context.addClass('ff_uploading');
+        },
+        progress: function progress(e, data) {
+          var progress = parseInt(data.loaded / data.total * 100, 10);
+          data.context.find('.ff-el-progress-bar').css('width', progress + '%');
+          data.context.find('.ff-upload-progress-inline-text').text(fluentFormVars.uploading_txt);
+        },
+        done: function done(e, data) {
+          data.context.removeClass('ff_uploading');
+          if (data.result && 'data' in data.result && 'files' in data.result.data) {
+            if ('error' in data.result.data.files[0]) {
+              // Error given by WP (wp_handle_upload)
+              showUploadError('Upload Error: ' + data.result.data.files[0].error);
+              data.context.remove();
+            } else {
+              data.context.find('.ff-upload-progress-inline-text').text(fluentFormVars.upload_completed_txt);
+              rules['max_file_count']['remaining'] -= 1;
+              data.context.attr('data-src', data.result.data.files[0].url);
+              data.context.find('.ff-upload-remove').attr({
+                'data-href': data.result.data.files[0].file,
+                'data-attachment-id': data.result.data.files[0].attachment_id
+              });
+              data.context.addClass('ff_uploading_complete');
+              $form.find('input[name=' + $el.data('name') + ']').trigger('change');
+            }
+          } else {
+            // For debugging purpose to catch devlopment erros,
+            // this check might not be needing in production.
+            var message = 'Sorry! The upload failed for some unknown reason.';
+            if (data.messages) {
+              var keys = Object.keys(data.messages);
+              if (keys.length) {
+                message = data.messages[keys[0]];
+              }
+            }
+            showUploadError(message);
+            data.context.remove();
+          }
+        },
+        fail: function fail(e, data) {
+          var errors = [];
+          data.context.remove();
+          if (data.jqXHR.responseJSON && data.jqXHR.responseJSON.errors) {
+            $.each(data.jqXHR.responseJSON.errors, function (key, error) {
+              if (_typeof(error) == 'object') {
+                $.each(error, function (i, msg) {
+                  errors.push(msg);
+                });
+              } else {
+                errors.push(error);
+              }
+            });
+          } else if (data.jqXHR.responseText) {
+            errors.push(data.jqXHR.responseText);
+          } else {
+            errors.push('Something is wrong when uploading the file! Please try again');
+          }
+          showUploadError(errors.join(', '));
+        }
+      });
+      $el.on('change_remaining', function (e, data) {
+        rules['max_file_count']['remaining'] += data;
+      });
+    });
+
+    // handling accessibility
+    $form.find('.ff_upload_btn').on('keyup', function (e) {
+      if (e.keyCode == 32) {
+        $(this).siblings('input[type=file]').trigger('click');
+      }
+    });
+  };
+
+  /**
+   * Get thumbnail image for file upload preview
+   * @param  {file} file
+   * @return {mixed}
+   */
+  var getThumbnail = function getThumbnail(file) {
+    if (!!file.type.match('image')) {
+      return URL.createObjectURL(file);
+    }
+    var canvas = document.createElement('canvas');
+    canvas.width = 60;
+    canvas.height = 60;
+    canvas.style.zIndex = 8;
+    canvas.style.position = "absolute";
+    canvas.style.border = "1px solid";
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(0, 0, 60, 60);
+    ctx.font = "13px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(file.name.substr(file.name.lastIndexOf('.') + 1), 30, 30, 60);
+    return canvas.toDataURL();
+  };
+
+  /**
+   * Get formatted file size to show in preview
+   * @param  {int} size
+   * @return {string}
+   */
+  var getFileSize = function returnFileSize(size) {
+    if (size < 1024) {
+      return size + 'bytes';
+    } else if (size >= 1024 && size <= 1048576) {
+      return (size / 1024).toFixed(1) + 'KB';
+    } else if (size > 1048576) {
+      return (size / 1048576).toFixed(1) + 'MB';
+    }
+  };
+
+  /**
+   * Register event handler to delete uploaded file
+   * @return {void}
+   */
+  var registerFileRemove = function registerFileRemove() {
+    $form.find('.ff-uploaded-list').on('click', '.ff-upload-remove', function (e) {
+      e.preventDefault();
+      var elFiles,
+        $this = $(this),
+        parent = $this.closest('.ff-uploaded-list'),
+        $el = parent.closest('.ff-el-input--content').find('input[type=file]'),
+        filePath = $this.attr('data-href'),
+        attachmentId = $this.attr('data-attachment-id');
+      if (filePath == '#') {
+        $this.closest('.ff-upload-preview').remove();
+        if (!parent.find('.ff-upload-preview').length) {
+          parent.siblings('.ff-upload-progress').addClass('ff-hidden');
+        }
+        $el.trigger('change_remaining', 1);
+      } else {
+        $.post(fluentFormVars.ajaxUrl, {
+          path: filePath,
+          attachment_id: attachmentId,
+          action: 'fluentform_delete_uploaded_file'
+        }).then(function (response) {
+          var element = $this.closest('.ff-el-input--content').find('input');
+          $el.trigger('change_remaining', 1);
+          $this.closest('.ff-upload-preview').remove();
+          if (!parent.find('.ff-upload-preview').length) {
+            parent.siblings('.ff-upload-progress').addClass('ff-hidden');
+          }
+          $el.trigger('change');
+        });
+      }
+    });
+  };
+
+  /**
+   * Validate a file before uploading
+   * @param  {file}
+   * @return {array}
+   */
+  var validateFile = function validateFile(file, rules) {
+    // return [];
+    var validationErrors = [];
+
+    // Accepted file types validation
+    var fileTypes = '';
+    var fileTypesMessage = '';
+    if ('allowed_file_types' in rules) {
+      fileTypes = rules['allowed_file_types']['value'];
+      fileTypesMessage = rules['allowed_file_types']['message'];
+    } else if ('allowed_image_types' in rules) {
+      fileTypes = rules['allowed_image_types']['value'];
+      fileTypesMessage = rules['allowed_image_types']['message'];
+    }
+    if (fileTypes) {
+      var acceptFileTypes = new RegExp('(' + fileTypes.join('|') + ')', 'i');
+      var fileExt = file['name'].split('.').pop();
+      fileExt = fileExt.toLowerCase();
+      if (!acceptFileTypes.test(fileExt)) {
+        validationErrors.push(fileTypesMessage);
+      }
+    }
+
+    // Maximum file size validation
+    if ('max_file_size' in rules && file['size'] > rules['max_file_size']['value']) {
+      validationErrors.push(rules['max_file_size']['message']);
+    }
+    return validationErrors;
+  };
+  initUploader();
+  registerFileRemove();
+  $(document.body).on('fluentform_reset', function () {
+    initUploader();
+  });
+}
+;
+
+/***/ }),
+
+/***/ "./resources/assets/public/Pro/form-conditionals.js":
+/*!**********************************************************!*\
+  !*** ./resources/assets/public/Pro/form-conditionals.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ConditionClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_ConditionClass */ "./resources/assets/public/Pro/_ConditionClass.js");
+
+var formConditional = function formConditional($, $theForm, form) {
+  /**
+   * Container to store all conditional
+   *  logics recieved from the server
+   *
+   * @type {Object}
+   */
+  var formSelector = '.' + form.form_instance;
+  var formCondition = function formCondition() {
+    var watchableFields = {};
+    var formData = {};
+    var getTheForm = function getTheForm() {
+      return $(formSelector);
+    };
+
+    /**
+     * Register all the required handlers
+     * for elements those, who have conditions
+     *
+     * @return void
+     */
+    var init = function init() {
+      if (!form.conditionals) {
+        return;
+      }
+      $.each(form.conditionals, function (fieldName, field) {
+        if (!fieldName) {
+          return;
+        }
+        $.each(field.conditions, function (index, condition) {
+          var el = getElement(condition.field);
+          watchableFields[el.prop('name')] = el;
+        });
+      });
+      formData = getFormData();
+      var conditionAppInstance = new _ConditionClass__WEBPACK_IMPORTED_MODULE_0__["default"](form.conditionals, formData);
+      $.each(watchableFields, function (name, el) {
+        el.on('change', function () {
+          formData = getFormData();
+          conditionAppInstance.setFormData(formData);
+          hideShowElements(conditionAppInstance.getCalculatedStatuses());
+        });
+      });
+      hideShowElements(conditionAppInstance.getCalculatedStatuses());
+    };
+    var hideShowElements = function hideShowElements(items) {
+      $.each(items, function (itemName, status) {
+        var el = getElement(itemName);
+        var $parent = el.closest('.has-conditions');
+        if (status) {
+          if ($parent.css('height') == '0px') {
+            $parent.attr("style", "");
+          }
+          $parent.removeClass('ff_excluded').addClass('ff_cond_v').slideDown(200);
+        } else {
+          $parent.removeClass('ff_cond_v').addClass('ff_excluded').slideUp(200);
+        }
+      });
+      $theForm.trigger('do_calculation');
+    };
+    var getFormData = function getFormData() {
+      var data = {};
+      $.each(watchableFields, function (name, el) {
+        var type = el.prop('type') || el.attr('data-type');
+        if (type == 'radio') {
+          data[name] = '';
+          el.each(function (index, item) {
+            if ($(item).is(':checked')) {
+              data[name] = $(item).val();
+            }
+          });
+        } else if (type == 'checkbox') {
+          name = name.replace('[]', '');
+          data[name] = [];
+          el.each(function (index, item) {
+            if ($(item).is(':checked')) {
+              data[name].push($(item).val());
+            }
+          });
+        } else if (type == 'select-multiple') {
+          name = name.replace('[]', '');
+          var val = el.val();
+          if (val) {
+            data[name] = val;
+          } else {
+            data[name] = [];
+          }
+        } else if (type == 'file') {
+          var file_urls = '';
+          var $el = $theForm.find('input[name=' + name + ']');
+          $el.closest('.ff-el-input--content').find('.ff-uploaded-list').find('.ff-upload-preview[data-src]').each(function (i, div) {
+            file_urls += $(this).data('src');
+          });
+          data[name] = file_urls;
+        } else {
+          data[name] = el.val();
+        }
+      });
+      return data;
+    };
+
+    /**
+     * Resolve a dom element as jQuery object
+     *
+     * @param  string name
+     * @return jQuery instance
+     */
+    var getElement = function getElement(name) {
+      var $theform = getTheForm();
+      var el = $("[data-name='" + name + "']", $theform);
+      el = el.length ? el : $("[name='" + name + "']", $theform);
+      return el.length ? el : $("[name='" + name + "[]']", $theform);
+    };
+    return {
+      init: init
+    };
+  };
+  formCondition().init();
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formConditional);
+
+/***/ }),
+
+/***/ "./resources/assets/public/Pro/slider.js":
+/*!***********************************************!*\
+  !*** ./resources/assets/public/Pro/slider.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__($, $theForm, fluentFormVars, formSelector) {
+  /**
+   * Active form step
+   * @type {Number}
+   */
+  var activeStep = 0;
+  var wrapperWidth = '';
+  fluentFormVars.stepAnimationDuration = parseInt(fluentFormVars.stepAnimationDuration);
+  var stepPersistency = $theForm.find('.ff-step-container').attr('data-enable_step_data_persistency') == 'yes';
+  var stepResume = false;
+  if (stepPersistency) {
+    stepResume = $theForm.find('.ff-step-container').attr('data-enable_step_page_resume') == 'yes';
+  }
+  var isRtl = !!window.fluentFormVars.is_rtl;
+  var isPopulatingStepData = false;
+
+  /**
+   * Remove prev button from first step
+   * @return void
+   */
+  var removePrevFromFirstFirstStep = function removePrevFromFirstFirstStep() {
+    $theForm.find('.fluentform-step:first').find('.step-nav [data-action="prev"]').remove();
+  };
+  var getFormInstance = function getFormInstance() {
+    return window.fluentFormApp($theForm);
+  };
+  var initFormWithSavedState = function initFormWithSavedState() {
+    if (!stepPersistency) return;
+    jQuery(document).ready(function (e) {
+      jQuery.getJSON(fluentFormVars.ajaxUrl, {
+        form_id: $theForm.data('form_id'),
+        action: 'fluentform_step_form_get_data'
+      }).then(function (data) {
+        if (data) {
+          populateFormDataAndSetActiveStep(data);
+        }
+      });
+    });
+  };
+  var populateFormDataAndSetActiveStep = function populateFormDataAndSetActiveStep(_ref) {
+    var response = _ref.response,
+      step_completed = _ref.step_completed;
+    var choiceJsInputs = [];
+    jQuery.each(response, function (key, value) {
+      if (!value) return;
+      var type = Object.prototype.toString.call(value);
+      if (type === '[object Object]') {
+        var $el = jQuery("[data-name=".concat(key, "]"));
+        if ($el.length && $el.attr('data-type') === 'tabular-element') {
+          // Tabular Grid
+          jQuery.each(value, function (row, columns) {
+            var $checkboxes = jQuery("[name=\"".concat(key, "[").concat(row, "]\\[\\]\"]"));
+            if (!$checkboxes.length) {
+              $checkboxes = jQuery("[name=\"".concat(key, "[").concat(row, "]\"]"));
+            }
+            jQuery.each($checkboxes, function (i, cbox) {
+              var $val = $(cbox).val();
+              if (jQuery.inArray($val, columns) !== -1 || $val === columns) {
+                $(cbox).prop('checked', true).change();
+              }
+            });
+          });
+        } else if ($el.attr('data-type') === 'chained-select') {
+          // Chained Select
+          var data = {
+            meta_key: $el.find('select:first').attr('data-meta_key'),
+            form_id: $el.closest('form').attr('data-form_id'),
+            action: 'fluentform_get_chained_select_options',
+            'filter_options': 'all',
+            'keys': value
+          };
+          jQuery.getJSON(fluentFormVars.ajaxUrl, data).then(function (response) {
+            jQuery.each(response, function (key, options) {
+              var $select = $el.find("select[data-key='".concat(key, "']"));
+              if ($select.attr('data-index') != 0) {
+                jQuery.each(options, function (k, val) {
+                  $select.append(jQuery('<option />', {
+                    value: val,
+                    text: val
+                  }));
+                });
+              }
+              $select.attr('disabled', false).val(value[key]);
+            });
+          });
+        } else {
+          // Names, Address e.t.c. fields
+          jQuery.each(value, function (k, v) {
+            jQuery("[name=\"".concat(key, "[").concat(k, "]\"]")).val(v).change();
+          });
+        }
+      } else if (type === '[object Array]') {
+        var _$el = jQuery("[name=".concat(key, "]"));
+        _$el = _$el.length ? _$el : jQuery("[data-name=".concat(key, "]"));
+        _$el = _$el.length ? _$el : jQuery("[name=".concat(key, "\\[\\]]"));
+        if (_$el.attr('type') == 'file') {
+          addFilesToElement(_$el, value);
+        } else if (_$el.prop('multiple')) {
+          if ($.isFunction(window.Choices)) {
+            var choiceJs = _$el.data('choicesjs');
+            choiceJsInputs.push({
+              handler: choiceJs,
+              values: value
+            });
+          } else {
+            _$el.val(value).change();
+          }
+        } else if (_$el.attr('data-type') === 'repeater_field') {
+          // Repeater Field
+          var $tbody = _$el.find('tbody');
+          var elName = _$el.attr('data-name');
+          jQuery.each(value, function (index, arr) {
+            if (index == 0) {
+              $tbody.find('tr:first .ff-el-form-control').each(function (i, el) {
+                $(el).val(arr[i]).change();
+              });
+              return;
+            }
+            var $tr = $tbody.find('tr:last').clone().appendTo($tbody);
+            $tr.find('.ff-el-form-control').each(function (i, el) {
+              var id = 'ffrpt-' + new Date().getTime() + i;
+              $(el).val(arr[i]);
+              $(el).attr({
+                id: id,
+                name: "".concat(elName, "[").concat(index, "][]"),
+                value: arr[i]
+              }).change();
+            });
+          });
+        } else {
+          // Checkbox Groups
+          _$el.each(function (i, $elem) {
+            if (jQuery.inArray($($elem).val(), value) != -1) {
+              $($elem).prop('checked', true).change();
+            }
+          });
+        }
+      } else {
+        // Others
+        var _$el2 = jQuery("[name=".concat(key, "]"));
+        if (_$el2.prop('type') === 'radio' || _$el2.prop('type') === 'checkbox') {
+          jQuery("[name=".concat(key, "][value=\"").concat(value, "\"]")).prop('checked', true).change();
+        } else {
+          var $canvas = _$el2.closest('.ff-el-group').find('.fluentform-signature-pad');
+          if ($canvas.length) {
+            var canvas = $canvas[0];
+            var ctx = canvas.getContext('2d');
+            var img = new Image();
+            img.src = value;
+            img.onload = function () {
+              ctx.drawImage(img, 0, 0);
+            };
+          }
+          _$el2.val(value).change();
+        }
+      }
+    });
+    // populate ChoiceJs Values separately as it breaks the loop
+    if (choiceJsInputs.length > 0) {
+      for (var i = 0; i < choiceJsInputs.length; i++) {
+        choiceJsInputs[i].handler.setValue(choiceJsInputs[i].values).change();
+      }
+    }
+    isPopulatingStepData = true;
+    // let saveProgressForm = $(formSelector).hasClass('ff-form-has-save-progress');
+    // if (stepResume || saveProgressForm) {
+    if (stepResume) {
+      updateSlider(step_completed, fluentFormVars.stepAnimationDuration, true);
+    }
+    isPopulatingStepData = false;
+  };
+
+  /**
+   * Register event handlers for form
+   * steps slider initialization
+   *
+   * @return void
+   */
+  var initStepSlider = function initStepSlider() {
+    var stepsWrapper = $theForm.find('.ff-step-body');
+    var formSteps = $theForm.find('.fluentform-step');
+    var totalSteps = formSteps.length;
+    var stepTitles = $theForm.find('.ff-step-titles li');
+    wrapperWidth = 100 * totalSteps + '%';
+    stepsWrapper.css({
+      width: wrapperWidth
+    });
+    formSteps.css({
+      width: 100 / totalSteps + '%'
+    });
+    $(formSteps[activeStep]).addClass('active');
+    $(stepTitles[activeStep]).addClass('active');
+
+    // submit button should only be printed on last step
+    if (formSteps.length && !formSteps.last().hasClass('active')) {
+      $theForm.find('button[type="submit"]').css('display', 'none');
+    }
+    stepProgressBarHandle({
+      activeStep: activeStep,
+      totalSteps: totalSteps
+    });
+    registerStepNavigators(fluentFormVars.stepAnimationDuration);
+    registerClickableStepNav(stepTitles, formSteps);
+  };
+
+  /**
+   * Register clickable step navigation
+   * @param  {object} stepTitlesNavs
+   * @param {object} formSteps
+   */
+  var registerClickableStepNav = function registerClickableStepNav(stepTitlesNavs, formSteps) {
+    if (stepTitlesNavs.length === 0) {
+      return;
+    }
+    $.each(stepTitlesNavs, function (i, elm) {
+      $(elm).attr('data-step-number', i);
+    });
+    stepTitlesNavs.on('click', function (e) {
+      var formInstance = getFormInstance();
+      var $this = $(this);
+      var currentStep = 0;
+      try {
+        var targetStep = $this.data('step-number');
+        if (isNaN(targetStep)) {
+          return;
+        }
+        //validate other steps before target step before next step
+        $.each(formSteps, function (index, steps) {
+          currentStep = index;
+          if (index < targetStep) {
+            var elements = $(steps).find(':input').not(':button').filter(function (i, el) {
+              return !$(el).closest('.has-conditions').hasClass('ff_excluded');
+            });
+            elements.length && formInstance.validate(elements);
+          }
+        });
+        updateSlider(targetStep, fluentFormVars.stepAnimationDuration, true);
+      } catch (e) {
+        if (!(e instanceof window.ffValidationError)) {
+          throw e;
+        }
+        updateSlider(currentStep, fluentFormVars.stepAnimationDuration, true);
+        formInstance.showErrorMessages(e.messages);
+        formInstance.scrollToFirstError(350);
+      }
+    });
+  };
+
+  /**
+   * Action occurs on step change/form load
+   * @param  {object} stepData
+   * @return {void}
+   */
+  var stepProgressBarHandle = function stepProgressBarHandle(stepData) {
+    if ($theForm.find('.ff-el-progress').length) {
+      var totalSteps = stepData.totalSteps,
+        activeStep = stepData.activeStep;
+      var completeness = 100 / totalSteps * (activeStep + 1);
+      var stepTitles = $theForm.find('.ff-el-progress-title li');
+      var progressBar = $theForm.find('.ff-step-header .ff-el-progress-bar');
+      var span = progressBar.find('span');
+      // progress bar completeness
+      progressBar.css({
+        width: completeness + '%'
+      });
+      if (completeness) {
+        progressBar.append(span.text(parseInt(completeness) + '%'));
+      } else {
+        span.empty();
+      }
+      // $theForm.find('.ff-el-progress-status').text(`${activeStep} out of ${totalSteps} Completed`);
+      var stepText = fluentFormVars.step_text;
+      var stepTitle = $(stepTitles[activeStep]).text();
+      stepText = stepText.replace('%activeStep%', activeStep + 1).replace('%totalStep%', totalSteps).replace('%stepTitle%', stepTitle);
+      $theForm.find('.ff-el-progress-status').html(stepText);
+      stepTitles.css('display', 'none');
+      $(stepTitles[activeStep]).css('display', 'inline');
+    }
+  };
+
+  /**
+   * Register event handlers for form
+   * steps to move forward or backward
+   *
+   * @return void
+   */
+  var registerStepNavigators = function registerStepNavigators(animDuration) {
+    $(document).on('keydown', formSelector + ' .fluentform-step > .step-nav button', function (e) {
+      if (e.which == 9) {
+        if ($(this).data('action') == 'next') {
+          e.preventDefault();
+        }
+      }
+    });
+    $(formSelector).on('click', '.fluentform-step  .step-nav button, .fluentform-step  .step-nav img', function (e) {
+      var btn = $(this).data('action');
+      var actionType = 'next';
+      var current = $(this).closest('.fluentform-step');
+      var formInstance = getFormInstance();
+      if (btn == 'next') {
+        try {
+          var elements = current.find(':input').not(':button').filter(function (i, el) {
+            return !$(el).closest('.has-conditions').hasClass('ff_excluded');
+          });
+          elements.length && formInstance.validate(elements);
+          activeStep++;
+        } catch (e) {
+          if (!(e instanceof window.ffValidationError)) {
+            throw e;
+          }
+          formInstance.showErrorMessages(e.messages);
+          formInstance.scrollToFirstError(350);
+          return;
+        }
+        $theForm.trigger('ff_to_next_page', activeStep);
+        jQuery(document).trigger('ff_to_next_page', {
+          step: activeStep,
+          form: $theForm
+        });
+        var formSteps = $theForm.find('.fluentform-step');
+        $theForm.trigger('ff_render_dynamic_smartcodes', $(formSteps[activeStep]));
+      } else {
+        activeStep--;
+        actionType = 'prev';
+        $theForm.trigger('ff_to_prev_page', activeStep);
+        jQuery(document).trigger('ff_to_prev_page', {
+          step: activeStep,
+          form: $theForm
+        });
+      }
+      var autoScroll = $theForm.find('.ff-step-container').attr('data-disable_auto_focus') != 'yes';
+      updateSlider(activeStep, animDuration, autoScroll, actionType);
+    });
+  };
+
+  /**
+   * Update slider position in multisteps form
+   * @param  {int} goBackToStep
+   * @param  {int} animDuration
+   * @param  {bool} isScrollTop
+   * @return {void}
+   */
+  var updateSlider = function updateSlider(goBackToStep, animDuration) {
+    var isScrollTop = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    var actionType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'next';
+    $('div' + formSelector + '_errors').empty();
+    activeStep = goBackToStep;
+    var stepsWrapper = $theForm.find('.ff-step-body');
+    var stepTitles = $theForm.find('.ff-step-titles li'),
+      formSteps = $theForm.find('.fluentform-step'),
+      totalSteps = formSteps.length,
+      formTop = $theForm.offset().top - (!!$('#wpadminbar') ? 32 : 0) - 20;
+
+    // change active step
+    formSteps.removeClass('active');
+    $(formSteps[activeStep]).addClass('active');
+
+    // change step title
+    stepTitles.removeClass('ff_active ff_completed');
+    $.each(_toConsumableArray(Array(activeStep).keys()), function (setp) {
+      $($(stepTitles[setp])).addClass('ff_completed');
+    });
+    $(stepTitles[activeStep]).addClass('ff_active');
+
+    // animate step on click next/prev
+    var scrollTop = function scrollTop() {
+      if (window.ff_disable_step_scroll) {
+        return;
+      }
+      var scrollElement = $theForm.find('.ff_step_start');
+      if (window.ff_scroll_top_offset) {
+        var formTop = window.ff_scroll_top_offset;
+      } else {
+        var formTop = scrollElement.offset().top - 20;
+      }
+      var isInViewport = function isInViewport($el) {
+        var elementTop = $el.offset().top;
+        var elementBottom = elementTop + $el.outerHeight();
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+      };
+      var isVisible = isInViewport(scrollElement);
+      if (!isVisible || window.ff_force_scroll) {
+        $('html, body').delay(animDuration).animate({
+          scrollTop: formTop
+        }, 0);
+      }
+    };
+    var inlineCssObj = {
+      left: -(activeStep * 100) + '%'
+    };
+    if (isRtl) {
+      inlineCssObj = {
+        right: -(activeStep * 100) + '%'
+      };
+    }
+    var animationType = $(formSteps[activeStep]).closest('.ff-step-container').data('animation_type');
+    switch (animationType) {
+      case 'slide':
+        //slide
+        stepsWrapper.animate(inlineCssObj, animDuration, function () {
+          isScrollTop && scrollTop();
+          stepsWrapper.css({
+            width: wrapperWidth
+          });
+        });
+        break;
+      case 'fade':
+        //fadeIn
+        stepsWrapper.css({
+          opacity: 0
+        });
+        stepsWrapper.animate(inlineCssObj, animDuration, function () {
+          isScrollTop && scrollTop();
+          stepsWrapper.css({
+            width: wrapperWidth
+          });
+        });
+        stepsWrapper.animate({
+          opacity: 1
+        }, animDuration);
+        break;
+      case 'slide_down':
+        //slideDown
+        stepsWrapper.hide();
+        stepsWrapper.css(inlineCssObj);
+        stepsWrapper.slideDown(animDuration);
+        break;
+      case 'none':
+        //fadeIn
+        stepsWrapper.css(inlineCssObj);
+        break;
+      default:
+        stepsWrapper.css(inlineCssObj);
+    }
+
+    //skip saving the last step
+    var isLastStep = activeStep === 0;
+
+    // Fire ajax request to persist the step state/data
+    if (stepPersistency && !isPopulatingStepData & !isLastStep) {
+      saveStepData($theForm, activeStep).then(function (response) {
+        console.log(response);
+      });
+    }
+
+    // update progressbar
+    stepProgressBarHandle({
+      activeStep: activeStep,
+      totalSteps: totalSteps
+    });
+
+    // now we have to check if there has any visible elements or not
+
+    // submit button should only be printed on last step
+    if (formSteps.last().hasClass('active')) {
+      $theForm.find('button[type="submit"]').css('display', 'inline-block');
+      return;
+    } else {
+      $theForm.find('button[type="submit"]').css('display', 'none');
+    }
+    if (!window.ff_disable_auto_step) {
+      var timeout = 0;
+      if ($theForm.find('.fluentform-step.active .ff_excluded').length) {
+        timeout = 50;
+      }
+      setTimeout(function () {
+        var $activeStepDom = $theForm.find('.fluentform-step.active');
+        var childDomCounts = $theForm.find('.fluentform-step.active > div').length - 1;
+        var hiddenDomCounts = $theForm.find('.fluentform-step.active > .ff_excluded').length;
+        if ($theForm.find('.fluentform-step.active > .ff-t-container').length) {
+          childDomCounts -= $theForm.find('.fluentform-step.active > .ff-t-container').length;
+          childDomCounts += $theForm.find('.fluentform-step.active > .ff-t-container > .ff-t-cell > div').length;
+          hiddenDomCounts += $theForm.find('.fluentform-step.active > .ff-t-container > .ff-t-cell > .ff_excluded').length;
+          if ($theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded').length) {
+            hiddenDomCounts -= $theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded').length;
+            hiddenDomCounts -= $theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > .ff_excluded').length;
+            hiddenDomCounts += $theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > div').length;
+          }
+        }
+        if (childDomCounts == hiddenDomCounts) {
+          $activeStepDom.find('.step-nav button[data-action=' + actionType + '], .step-nav img[data-action=' + actionType + ']').click();
+        }
+      }, timeout);
+    }
+  };
+  var saveStepData = function saveStepData($theForm, activeStep) {
+    var $inputs = $theForm.find(':input').filter(function (i, el) {
+      return !$(el).closest('.has-conditions').hasClass('ff_excluded');
+    });
+    $inputs.filter(function (i, el) {
+      var $el = $(el);
+      return $el.parents().hasClass('ff_repeater_table') && $el.attr('type') == 'select' && !$el.val();
+    }).prepend('<option selected disabled />');
+    var inputData = $inputs.serialize();
+    var hasFiles = false;
+    $.each($theForm.find('[type=file]'), function (index, fileInput) {
+      var params = {},
+        fileInputName = fileInput.name + '[]';
+      params[fileInputName] = [];
+      $(fileInput).closest('div').find('.ff-uploaded-list').find('.ff-upload-preview[data-src]').each(function (i, div) {
+        params[fileInputName][i] = $(this).data('src');
+      });
+      $.each(params, function (k, v) {
+        if (v.length) {
+          var obj = {};
+          obj[k] = v;
+          inputData += '&' + $.param(obj);
+          hasFiles = true;
+        }
+      });
+    });
+    var formData = {
+      active_step: activeStep,
+      data: inputData,
+      form_id: $theForm.data('form_id'),
+      action: 'fluentform_step_form_save_data'
+    };
+    return jQuery.post(fluentFormVars.ajaxUrl, formData);
+  };
+  var maybeAutoSlider = function maybeAutoSlider() {
+    var autoSlider = $theForm.find('.ff-step-container').attr('data-enable_auto_slider') == 'yes';
+    if (!autoSlider) {
+      return;
+    }
+    function maybeAction($el) {
+      var count = $el.closest('.fluentform-step.active').find('.ff-el-group:not(.ff_excluded):not(.ff-custom_html)').length;
+      if (count == 1) {
+        var condCounts = $el.closest('.fluentform-step.active').find('.ff_excluded').length;
+        if (condCounts) {
+          var timeout = window.ffTransitionTimeOut || 400;
+          setTimeout(function () {
+            $el.closest('.fluentform-step.active').find('.ff-btn-next').trigger('click');
+          }, timeout);
+        } else {
+          $el.closest('.fluentform-step.active').find('.ff-btn-next').trigger('click');
+        }
+      }
+    }
+    $theForm.find('.ff-el-form-check-radio,.ff-el-net-label, .ff-el-ratings label').on('click', function () {
+      maybeAction($(this));
+    });
+    $theForm.find('select').on('change', function () {
+      maybeAction($(this));
+    });
+  };
+  var addFilesToElement = function addFilesToElement($el, fileUrls) {
+    var $uploadedList = $el.closest('.ff-el-input--content').find('.ff-uploaded-list');
+    $.each(fileUrls, function (index, file) {
+      file = _typeof(file) === 'object' ? file : {
+        url: file,
+        data_src: file
+      };
+      var previewContainer = $('<div/>', {
+        "class": 'ff-upload-preview',
+        'data-src': file.data_src,
+        style: 'border: 1px solid rgb(111, 117, 125)'
+      });
+      var previewThumb = $('<div/>', {
+        "class": 'ff-upload-thumb'
+      });
+      previewThumb.append($('<div/>', {
+        "class": 'ff-upload-preview-img',
+        style: "background-image: url('".concat(getThumbnail(file.url), "');")
+      }));
+      var previewDetails = $('<div/>', {
+        "class": 'ff-upload-details'
+      });
+      var fileProgress = $('<span/>', {
+        html: fluentFormVars.upload_completed_txt,
+        "class": 'ff-upload-progress-inline-text ff-inline-block'
+      });
+      var name = file.url.substring(file.url.lastIndexOf('/') + 1);
+      if (name.includes('-ff-')) {
+        name = name.substring(name.lastIndexOf('-ff-') + 4);
+      }
+      var fileName = $('<div/>', {
+        "class": 'ff-upload-filename',
+        html: name
+      });
+      var progressBarInline = $("\n\t\t\t\t\t\t\t\t\t<div class=\"ff-upload-progress-inline ff-el-progress\">\n\t\t\t\t\t\t\t\t\t\t<div style=\"width: 100%;\" class=\"ff-el-progress-bar\"></div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t");
+      var removeBtn = $('<span/>', {
+        'data-href': '#',
+        'html': '&times;',
+        'class': 'ff-upload-remove'
+      });
+      var fileSize = $('<div>', {
+        "class": 'ff-upload-filesize ff-inline-block',
+        html: ''
+      });
+      var errorInline = $('<div>', {
+        "class": 'ff-upload-error',
+        style: 'color:red;'
+      });
+      previewDetails.append(fileName, progressBarInline, fileProgress, fileSize, errorInline, removeBtn);
+      previewContainer.append(previewThumb, previewDetails);
+      $uploadedList.append(previewContainer);
+    });
+    $el.trigger('change_remaining', -fileUrls.length);
+    $el.trigger('change');
+  };
+  var getThumbnail = function getThumbnail(file) {
+    var extension = file.split(/[#?]/)[0].split('.').pop().trim().toLowerCase();
+    if (['jpg', 'jpeg', 'gif', 'png'].indexOf(extension) != -1) {
+      return file;
+    }
+    var canvas = document.createElement('canvas');
+    canvas.width = 60;
+    canvas.height = 60;
+    canvas.style.zIndex = 8;
+    canvas.style.position = "absolute";
+    canvas.style.border = "1px solid";
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(0, 0, 60, 60);
+    ctx.font = "13px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(extension, 30, 30, 60);
+    return canvas.toDataURL();
+  };
+  var init = function init() {
+    initFormWithSavedState();
+    removePrevFromFirstFirstStep();
+    initStepSlider();
+    maybeAutoSlider();
+  };
+  return {
+    init: init,
+    updateSlider: updateSlider,
+    populateFormDataAndSetActiveStep: populateFormDataAndSetActiveStep
+  };
+}
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!********************************************************!*\
+  !*** ./resources/assets/public/fluentform-advanced.js ***!
+  \********************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Pro_dom_net_promoter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pro/dom-net-promoter */ "./resources/assets/public/Pro/dom-net-promoter.js");
+/* harmony import */ var _Pro_dom_repeat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pro/dom-repeat */ "./resources/assets/public/Pro/dom-repeat.js");
+/* harmony import */ var _Pro_dom_rating__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pro/dom-rating */ "./resources/assets/public/Pro/dom-rating.js");
+/* harmony import */ var _Pro_form_conditionals__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pro/form-conditionals */ "./resources/assets/public/Pro/form-conditionals.js");
+/* harmony import */ var _Pro_file_uploader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pro/file-uploader */ "./resources/assets/public/Pro/file-uploader.js");
+/* harmony import */ var _Pro_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pro/slider */ "./resources/assets/public/Pro/slider.js");
+/* harmony import */ var _Pro_calculations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Pro/calculations */ "./resources/assets/public/Pro/calculations.js");
+
+
+
+
+
+
+
+(function ($) {
+  $(document.body).on('fluentform_init', function (e, $theForm, form) {
+    var formInstanceSelector = $theForm.attr('data-form_instance');
+    if (!form) {
+      console.log('No Fluent form JS vars found!');
+      return;
+    }
+    var formId = form.form_id_selector;
+    var formSelector = '.' + form.form_instance;
+    function maybeUpdateDynamicLabels(workStep) {
+      jQuery.each(workStep.find('.ff_dynamic_value'), function (index, item) {
+        var ref = $(item).data('ref');
+        if (ref == 'payment_summary') {
+          $theForm.trigger('calculate_payment_summary', {
+            element: $(item)
+          });
+          return;
+        }
+        var refElement = $theForm.find('.ff-el-form-control[name="' + ref + '"]');
+        var separator = ' ';
+        if (!refElement.length) {
+          refElement = $theForm.find('.ff-field_container[data-name="' + ref + '"]').find('input');
+        }
+        if (!refElement.length) {
+          // This may radio element / Checkbox element
+          refElement = $theForm.find('*[name="' + ref + '"]:checked');
+          if (!refElement.length) {
+            refElement = $theForm.find('*[name="' + ref + '[]"]:checked');
+            separator = ', ';
+          }
+
+          // maybe it's a multi-select item
+          if (!refElement.length) {
+            refElement = $theForm.find('*[name="' + ref + '[]"]').find('option:selected');
+            separator = ', ';
+          }
+        }
+        var refValues = [];
+        $.each(refElement, function () {
+          var inputValue = $(this).val();
+          // if(inputValue) {
+          //     let tagName = $(this).prop("tagName");
+          //     if (tagName == 'OPTION') {
+          //         inputValue = $(this).text();
+          //     } else if (tagName == 'SELECT') {
+          //         inputValue = $(this).find('option:selected').text();
+          //     } else if (tagName == 'INPUT' && $(this).attr('type') == 'checkbox') {
+          //         inputValue = $(this).parent().find('span').html();
+          //     }
+          // }
+          if (inputValue) {
+            refValues.push(inputValue);
+          }
+        });
+        var replaceValue = '';
+        if (refValues.length) {
+          replaceValue = refValues.join(separator);
+        } else {
+          replaceValue = $(item).data('fallback');
+        }
+        $(this).html(replaceValue);
+      });
+    }
+
+    /*
+    * Normals
+     */
+    (0,_Pro_file_uploader__WEBPACK_IMPORTED_MODULE_4__["default"])($, $theForm, form, window.fluentFormVars, formSelector);
+    (0,_Pro_dom_repeat__WEBPACK_IMPORTED_MODULE_1__.initRepeater)($theForm);
+    (0,_Pro_dom_repeat__WEBPACK_IMPORTED_MODULE_1__.initRepeatButtons)($, $theForm);
+    (0,_Pro_form_conditionals__WEBPACK_IMPORTED_MODULE_3__["default"])($, $theForm, form, window.fluentFormVars);
+    (0,_Pro_calculations__WEBPACK_IMPORTED_MODULE_6__["default"])($, $theForm);
+    (0,_Pro_dom_rating__WEBPACK_IMPORTED_MODULE_2__["default"])($, $theForm);
+    (0,_Pro_dom_net_promoter__WEBPACK_IMPORTED_MODULE_0__["default"])($, $theForm);
+    if ($theForm.hasClass('ff-form-has-steps')) {
+      var sliderInstance = (0,_Pro_slider__WEBPACK_IMPORTED_MODULE_5__["default"])($, $theForm, window.fluentFormVars, formSelector);
+      sliderInstance.init();
+      $theForm.on('update_slider', function (e, data) {
+        sliderInstance.updateSlider(data.goBackToStep, data.animDuration, data.isScrollTop, data.actionType);
+      });
+    }
+    if ($theForm.hasClass('ff_has_dynamic_smartcode')) {
+      $theForm.on('ff_render_dynamic_smartcodes', function (e, selector) {
+        maybeUpdateDynamicLabels($(selector));
+      });
+      $theForm.on('keyup change', ':input', function () {
+        maybeUpdateDynamicLabels($theForm);
+      });
+      maybeUpdateDynamicLabels($theForm);
+    }
+  });
+})(jQuery);
+
+// Polyfill for startsWith and endsWith
+(function (sp) {
+  // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith#Polyfill
+  if (!sp.startsWith) {
+    sp.startsWith = function (search, pos) {
+      pos = !pos || pos < 0 ? 0 : +pos;
+      return this.substring(pos, pos + search.length) === search;
+    };
+  }
+
+  // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith#Polyfill
+  if (!sp.endsWith) {
+    sp.endsWith = function (search, this_len) {
+      if (this_len === undefined || this_len > this.length) {
+        this_len = this.length;
+      }
+      return this.substring(this_len - search.length, this_len) === search;
+    };
+  }
+
+  // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+  if (!sp.includes) {
+    sp.includes = function (search, start) {
+      if (search instanceof RegExp) {
+        throw TypeError('first argument must not be a RegExp');
+      }
+      if (start === undefined) {
+        start = 0;
+      }
+      return this.indexOf(search, start) !== -1;
+    };
+  }
+})(String.prototype);
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=fluentform-advanced.js.map

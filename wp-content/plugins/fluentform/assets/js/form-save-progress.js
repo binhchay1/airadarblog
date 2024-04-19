@@ -1,1 +1,910 @@
-(()=>{"use strict";function t(e){return t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},t(e)}function e(t){return function(t){if(Array.isArray(t))return n(t)}(t)||function(t){if("undefined"!=typeof Symbol&&null!=t[Symbol.iterator]||null!=t["@@iterator"])return Array.from(t)}(t)||function(t,e){if(!t)return;if("string"==typeof t)return n(t,e);var a=Object.prototype.toString.call(t).slice(8,-1);"Object"===a&&t.constructor&&(a=t.constructor.name);if("Map"===a||"Set"===a)return Array.from(t);if("Arguments"===a||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))return n(t,e)}(t)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function n(t,e){(null==e||e>t.length)&&(e=t.length);for(var n=0,a=new Array(e);n<e;n++)a[n]=t[n];return a}function a(n,a,f,r){var i=0,s="";f.stepAnimationDuration=parseInt(f.stepAnimationDuration);var o="yes"==a.find(".ff-step-container").attr("data-enable_step_data_persistency"),l=!1;o&&(l="yes"==a.find(".ff-step-container").attr("data-enable_step_page_resume"));var c=!!window.fluentFormVars.is_rtl,d=!1,u=function(){return window.fluentFormApp(a)},p=function(t){var e=t.response,a=t.step_completed,r=[];if(jQuery.each(e,(function(t,e){if(e){var a=Object.prototype.toString.call(e);if("[object Object]"===a){var i=jQuery("[data-name=".concat(t,"]"));if(i.length&&"tabular-element"===i.attr("data-type"))jQuery.each(e,(function(e,a){var f=jQuery('[name="'.concat(t,"[").concat(e,']\\[\\]"]'));f.length||(f=jQuery('[name="'.concat(t,"[").concat(e,']"]'))),jQuery.each(f,(function(t,e){var f=n(e).val();-1===jQuery.inArray(f,a)&&f!==a||n(e).prop("checked",!0).change()}))}));else if("chained-select"===i.attr("data-type")){var s={meta_key:i.find("select:first").attr("data-meta_key"),form_id:i.closest("form").attr("data-form_id"),action:"fluentform_get_chained_select_options",filter_options:"all",keys:e};jQuery.getJSON(f.ajaxUrl,s).then((function(t){jQuery.each(t,(function(t,n){var a=i.find("select[data-key='".concat(t,"']"));0!=a.attr("data-index")&&jQuery.each(n,(function(t,e){a.append(jQuery("<option />",{value:e,text:e}))})),a.attr("disabled",!1).val(e[t])}))}))}else jQuery.each(e,(function(e,n){jQuery('[name="'.concat(t,"[").concat(e,']"]')).val(n).change()}))}else if("[object Array]"===a){var o=jQuery("[name=".concat(t,"]"));if("file"==(o=(o=o.length?o:jQuery("[data-name=".concat(t,"]"))).length?o:jQuery("[name=".concat(t,"\\[\\]]"))).attr("type"))y(o,e);else if(o.prop("multiple"))if(n.isFunction(window.Choices)){var l=o.data("choicesjs");r.push({handler:l,values:e})}else o.val(e).change();else if("repeater_field"===o.attr("data-type")){var c=o.find("tbody"),d=o.attr("data-name");jQuery.each(e,(function(t,e){0!=t?c.find("tr:last").clone().appendTo(c).find(".ff-el-form-control").each((function(a,f){var r="ffrpt-"+(new Date).getTime()+a;n(f).val(e[a]),n(f).attr({id:r,name:"".concat(d,"[").concat(t,"][]"),value:e[a]}).change()})):c.find("tr:first .ff-el-form-control").each((function(t,a){n(a).val(e[t]).change()}))}))}else o.each((function(t,a){-1!=jQuery.inArray(n(a).val(),e)&&n(a).prop("checked",!0).change()}))}else{var u=jQuery("[name=".concat(t,"]"));if("radio"===u.prop("type")||"checkbox"===u.prop("type"))jQuery("[name=".concat(t,'][value="').concat(e,'"]')).prop("checked",!0).change();else{var p=u.closest(".ff-el-group").find(".fluentform-signature-pad");if(p.length){var v=p[0].getContext("2d"),m=new Image;m.src=e,m.onload=function(){v.drawImage(m,0,0)}}u.val(e).change()}}}})),r.length>0)for(var i=0;i<r.length;i++)r[i].handler.setValue(r[i].values).change();d=!0,l&&h(a,f.stepAnimationDuration,!0),d=!1},v=function(t,e){0!==t.length&&(n.each(t,(function(t,e){n(e).attr("data-step-number",t)})),t.on("click",(function(t){var a=u(),r=n(this),i=0;try{var s=r.data("step-number");if(isNaN(s))return;n.each(e,(function(t,e){if(i=t,t<s){var f=n(e).find(":input").not(":button").filter((function(t,e){return!n(e).closest(".has-conditions").hasClass("ff_excluded")}));f.length&&a.validate(f)}})),h(s,f.stepAnimationDuration,!0)}catch(t){if(!(t instanceof window.ffValidationError))throw t;h(i,f.stepAnimationDuration,!0),a.showErrorMessages(t.messages),a.scrollToFirstError(350)}})))},m=function(t){if(a.find(".ff-el-progress").length){var e=t.totalSteps,r=t.activeStep,i=100/e*(r+1),s=a.find(".ff-el-progress-title li"),o=a.find(".ff-step-header .ff-el-progress-bar"),l=o.find("span");o.css({width:i+"%"}),i?o.append(l.text(parseInt(i)+"%")):l.empty();var c=f.step_text,d=n(s[r]).text();c=c.replace("%activeStep%",r+1).replace("%totalStep%",e).replace("%stepTitle%",d),a.find(".ff-el-progress-status").html(c),s.css("display","none"),n(s[r]).css("display","inline")}},_=function(t){n(document).on("keydown",r+" .fluentform-step > .step-nav button",(function(t){9==t.which&&"next"==n(this).data("action")&&t.preventDefault()})),n(r).on("click",".fluentform-step  .step-nav button, .fluentform-step  .step-nav img",(function(e){var f=n(this).data("action"),r="next",s=n(this).closest(".fluentform-step"),o=u();if("next"==f){try{var l=s.find(":input").not(":button").filter((function(t,e){return!n(e).closest(".has-conditions").hasClass("ff_excluded")}));l.length&&o.validate(l),i++}catch(e){if(!(e instanceof window.ffValidationError))throw e;return o.showErrorMessages(e.messages),void o.scrollToFirstError(350)}a.trigger("ff_to_next_page",i),jQuery(document).trigger("ff_to_next_page",{step:i,form:a});var c=a.find(".fluentform-step");a.trigger("ff_render_dynamic_smartcodes",n(c[i]))}else i--,r="prev",a.trigger("ff_to_prev_page",i),jQuery(document).trigger("ff_to_prev_page",{step:i,form:a});var d="yes"!=a.find(".ff-step-container").attr("data-disable_auto_focus");h(i,t,d,r)}))},h=function(t,f){var l=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],u=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"next";n("div"+r+"_errors").empty(),i=t;var p=a.find(".ff-step-body"),v=a.find(".ff-step-titles li"),_=a.find(".fluentform-step"),h=_.length;a.offset().top,n("#wpadminbar");_.removeClass("active"),n(_[i]).addClass("active"),v.removeClass("ff_active ff_completed"),n.each(e(Array(i).keys()),(function(t){n(n(v[t])).addClass("ff_completed")})),n(v[i]).addClass("ff_active");var y=function(){if(!window.ff_disable_step_scroll){var t=a.find(".ff_step_start");if(window.ff_scroll_top_offset)var e=window.ff_scroll_top_offset;else e=t.offset().top-20;var r,i,s,o,l;(i=(r=t).offset().top,s=i+r.outerHeight(),o=n(window).scrollTop(),l=o+n(window).height(),s>o&&i<l)&&!window.ff_force_scroll||n("html, body").delay(f).animate({scrollTop:e},0)}},b={left:-100*i+"%"};switch(c&&(b={right:-100*i+"%"}),n(_[i]).closest(".ff-step-container").data("animation_type")){case"slide":p.animate(b,f,(function(){l&&y(),p.css({width:s})}));break;case"fade":p.css({opacity:0}),p.animate(b,f,(function(){l&&y(),p.css({width:s})})),p.animate({opacity:1},f);break;case"slide_down":p.hide(),p.css(b),p.slideDown(f);break;default:p.css(b)}if(o&&!d&!(0===i)&&g(a,i).then((function(t){console.log(t)})),m({activeStep:i,totalSteps:h}),_.last().hasClass("active"))a.find('button[type="submit"]').css("display","inline-block");else if(a.find('button[type="submit"]').css("display","none"),!window.ff_disable_auto_step){var w=0;a.find(".fluentform-step.active .ff_excluded").length&&(w=50),setTimeout((function(){var t=a.find(".fluentform-step.active"),e=a.find(".fluentform-step.active > div").length-1,n=a.find(".fluentform-step.active > .ff_excluded").length;a.find(".fluentform-step.active > .ff-t-container").length&&(e-=a.find(".fluentform-step.active > .ff-t-container").length,e+=a.find(".fluentform-step.active > .ff-t-container > .ff-t-cell > div").length,n+=a.find(".fluentform-step.active > .ff-t-container > .ff-t-cell > .ff_excluded").length,a.find(".fluentform-step.active > .ff-t-container.ff_excluded").length&&(n-=a.find(".fluentform-step.active > .ff-t-container.ff_excluded").length,n-=a.find(".fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > .ff_excluded").length,n+=a.find(".fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > div").length)),e==n&&t.find(".step-nav button[data-action="+u+"], .step-nav img[data-action="+u+"]").click()}),w)}},g=function(t,e){var a=t.find(":input").filter((function(t,e){return!n(e).closest(".has-conditions").hasClass("ff_excluded")}));a.filter((function(t,e){var a=n(e);return a.parents().hasClass("ff_repeater_table")&&"select"==a.attr("type")&&!a.val()})).prepend("<option selected disabled />");var r=a.serialize();n.each(t.find("[type=file]"),(function(t,e){var a={},f=e.name+"[]";a[f]=[],n(e).closest("div").find(".ff-uploaded-list").find(".ff-upload-preview[data-src]").each((function(t,e){a[f][t]=n(this).data("src")})),n.each(a,(function(t,e){if(e.length){var a={};a[t]=e,r+="&"+n.param(a),!0}}))}));var i={active_step:e,data:r,form_id:t.data("form_id"),action:"fluentform_step_form_save_data"};return jQuery.post(f.ajaxUrl,i)},y=function(e,a){var r=e.closest(".ff-el-input--content").find(".ff-uploaded-list");n.each(a,(function(e,a){a="object"===t(a)?a:{url:a,data_src:a};var i=n("<div/>",{class:"ff-upload-preview","data-src":a.data_src,style:"border: 1px solid rgb(111, 117, 125)"}),s=n("<div/>",{class:"ff-upload-thumb"});s.append(n("<div/>",{class:"ff-upload-preview-img",style:"background-image: url('".concat(b(a.url),"');")}));var o=n("<div/>",{class:"ff-upload-details"}),l=n("<span/>",{html:f.upload_completed_txt,class:"ff-upload-progress-inline-text ff-inline-block"}),c=a.url.substring(a.url.lastIndexOf("/")+1);c.includes("-ff-")&&(c=c.substring(c.lastIndexOf("-ff-")+4));var d=n("<div/>",{class:"ff-upload-filename",html:c}),u=n('\n\t\t\t\t\t\t\t\t\t<div class="ff-upload-progress-inline ff-el-progress">\n\t\t\t\t\t\t\t\t\t\t<div style="width: 100%;" class="ff-el-progress-bar"></div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t'),p=n("<span/>",{"data-href":"#",html:"&times;",class:"ff-upload-remove"}),v=n("<div>",{class:"ff-upload-filesize ff-inline-block",html:""}),m=n("<div>",{class:"ff-upload-error",style:"color:red;"});o.append(d,u,l,v,m,p),i.append(s,o),r.append(i)})),e.trigger("change_remaining",-a.length),e.trigger("change")},b=function(t){var e=t.split(/[#?]/)[0].split(".").pop().trim().toLowerCase();if(-1!=["jpg","jpeg","gif","png"].indexOf(e))return t;var n=document.createElement("canvas");n.width=60,n.height=60,n.style.zIndex=8,n.style.position="absolute",n.style.border="1px solid";var a=n.getContext("2d");return a.fillStyle="rgba(0, 0, 0, 0.2)",a.fillRect(0,0,60,60),a.font="13px Arial",a.fillStyle="white",a.textAlign="center",a.fillText(e,30,30,60),n.toDataURL()};return{init:function(){var t,e,r,l;o&&jQuery(document).ready((function(t){jQuery.getJSON(f.ajaxUrl,{form_id:a.data("form_id"),action:"fluentform_step_form_get_data"}).then((function(t){t&&p(t)}))})),a.find(".fluentform-step:first").find('.step-nav [data-action="prev"]').remove(),t=a.find(".ff-step-body"),e=a.find(".fluentform-step"),r=e.length,l=a.find(".ff-step-titles li"),s=100*r+"%",t.css({width:s}),e.css({width:100/r+"%"}),n(e[i]).addClass("active"),n(l[i]).addClass("active"),e.length&&!e.last().hasClass("active")&&a.find('button[type="submit"]').css("display","none"),m({activeStep:i,totalSteps:r}),_(f.stepAnimationDuration),v(l,e),function(){function t(t){if(1==t.closest(".fluentform-step.active").find(".ff-el-group:not(.ff_excluded):not(.ff-custom_html)").length)if(t.closest(".fluentform-step.active").find(".ff_excluded").length){var e=window.ffTransitionTimeOut||400;setTimeout((function(){t.closest(".fluentform-step.active").find(".ff-btn-next").trigger("click")}),e)}else t.closest(".fluentform-step.active").find(".ff-btn-next").trigger("click")}"yes"==a.find(".ff-step-container").attr("data-enable_auto_slider")&&(a.find(".ff-el-form-check-radio,.ff-el-net-label, .ff-el-ratings label").on("click",(function(){t(n(this))})),a.find("select").on("change",(function(){t(n(this))})))}()},updateSlider:h,populateFormDataAndSetActiveStep:p}}var f;(f=jQuery)(document.body).on("fluentform_init",(function(t,e,n){var r="."+n.form_instance,i=-1,s="no";if(f(r).hasClass("ff-form-has-save-progress")){f(r).hasClass("ff-form-has-steps")&&(e.on("ff_to_next_page",(function(t,e){s=e})),e.on("ff_to_prev_page",(function(t,e){s=e}))),f(r).find(".ff-btn-save-progress").each((function(t,n){var a=f(n);a.on("click",(function(t){var n=this;t.preventDefault(),a.addClass("ff-working");var r=e.find(":input").filter((function(t,e){return!f(e).closest(".has-conditions").hasClass("ff_excluded")}));r.filter((function(t,e){var n=f(e);return n.parents().hasClass("ff_repeater_table")&&"select"==n.attr("type")&&!n.val()})).prepend("<option selected disabled />");var o=r.serialize();f.each(e.find("[type=file]"),(function(t,e){var n={},a=e.name+"[]";n[a]=[],f(e).closest("div").find(".ff-uploaded-list").find(".ff-upload-preview[data-src]").each((function(t,e){n[a][t]=f(this).data("src")})),f.each(n,(function(t,e){if(e.length){var n={};n[t]=e,o+="&"+f.param(n)}}))}));var l={source_url:window.form_state_save_vars.source_url,action:"fluentform_save_form_progress_with_link",data:o,form_id:e.data("form_id"),hash:i,active_step:s,nonce:window.form_state_save_vars.nonce},c=l.form_id+"_save_progress_msg",d="#"+c;jQuery.post(fluentFormVars.ajaxUrl,l).then((function(t){if(t){var r;i=t.data.hash,e.find(".ff-saved-state-link"),""!=(null===(r=t.data)||void 0===r?void 0:r.message)&&(f(d).length&&f(d).slideUp("fast"),f("<div/>",{id:c,class:"ff-message-success ff-el-group"}).html(t.data.message).insertBefore(a.closest(".ff-el-group")));var s=window.form_state_save_vars.copy_button||"Copy",o='<div class="ff-el-input--content">\n                                <div class="ff_input-group">\n                                    <input readonly value="'.concat(t.data.saved_url,'" class="ff-el-form-control" >\n                                    <div class="ff_input-group-append">\n                                        <button class="ff-btn ff-btn-md ff_btn_style ff_btn_copy_link ff_input-group-text">').concat(s,"</button>\n                                    </div>\n                                </div>\n                            </div>"),l=f("<div/>",{class:"ff-el-group ff-saved-state-input ff-saved-state-link ff-hide-group",html:o});f(n).closest(".ff-el-group").after(l),l.fadeIn();var u=window.form_state_save_vars.email_placeholder_str||"Your Email Here",p=window.form_state_save_vars.email_button||"Email";if(f(n).hasClass("ff_resume_email_enabled")){var v='<div class="ff-el-input--content">\n                                    <div class="ff_input-group">\n                                        <input type="email" class="ff-el-form-control" placeholder="'.concat(u,'" class="ff-el-form-control">\n                                        <div class="ff_input-group-append">\n                                            <button class="ff-btn ff-btn-md ff_btn_style ff_btn_is_email ff_input-group-text">').concat(p,"</button>\n                                        </div>\n                                    </div>\n                                </div>"),m=f("<div/>",{class:"ff-el-group ff-saved-state-input  ff-email-address ff-hide-group",html:v});f(l).after(m),m.fadeIn()}}})).fail((function(t){f(d).length&&f(d).slideUp("fast"),f("<div/>",{id:c,class:"ff-message-success ff-el-group text-danger"}).html(t.responseJSON.data.message).insertBefore(a.closest(".ff-el-group"))})).always((function(){a.parent().hide()}))}))})),f(r).on("click",".ff_btn_copy_link",(function(t){t.preventDefault();var e=f(this).closest(".ff-el-input--content").find(".ff-el-form-control").val();navigator.clipboard.writeText(e);var n=window.form_state_save_vars.copy_success_button||"Copied";f(this).html("".concat(n))})),f(r).on("click",".ff_btn_is_email",(function(t){t.preventDefault();var n=f(this).closest(".ff-el-group"),a=f(this).closest(".ff-email-address").find("input").val();f(".ff-email-address").find("input").val("");var r=f(".ff-saved-state-link").find("input").val(),s={source_url:window.form_state_save_vars.source_url,action:"fluentform_email_progress_link",form_id:e.data("form_id"),to_email:a,link:r,hash:i,nonce:window.form_state_save_vars.nonce},o=s.form_id+"_save_progress_email_response",l="#"+o;jQuery.post(fluentFormVars.ajaxUrl,s).then((function(t){t&&(n.removeClass("ff-el-is-error"),f(l).length&&f(l).slideUp("fast"),f("<div/>",{id:o,class:"ff-message-success ff-el-group"}).html(t.data.response).insertAfter(n))})).fail((function(t){t&&(n.addClass("ff-el-is-error"),f(l).length&&f(l).slideUp("fast"),f("<div/>",{id:o,class:"ff-message-success ff-el-group text-danger"}).html(t.responseJSON.data.Error).insertAfter(n))}))}));var o=!1;void 0!==window.form_state_save_vars&&(o=window.form_state_save_vars.key),o&&(e.append('<input type="hidden" value="'.concat(o,'" class="__fluent_state_hash" name="__fluent_state_hash"/>')),jQuery.getJSON(fluentFormVars.ajaxUrl,{form_id:e.data("form_id"),action:"fluentform_get_form_state",hash:o,nonce:window.form_state_save_vars.nonce}).then((function(t){t&&a(f,e,window.fluentFormVars,r).populateFormDataAndSetActiveStep(t)})))}}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./resources/assets/public/Pro/slider.js":
+/*!***********************************************!*\
+  !*** ./resources/assets/public/Pro/slider.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__($, $theForm, fluentFormVars, formSelector) {
+  /**
+   * Active form step
+   * @type {Number}
+   */
+  var activeStep = 0;
+  var wrapperWidth = '';
+  fluentFormVars.stepAnimationDuration = parseInt(fluentFormVars.stepAnimationDuration);
+  var stepPersistency = $theForm.find('.ff-step-container').attr('data-enable_step_data_persistency') == 'yes';
+  var stepResume = false;
+  if (stepPersistency) {
+    stepResume = $theForm.find('.ff-step-container').attr('data-enable_step_page_resume') == 'yes';
+  }
+  var isRtl = !!window.fluentFormVars.is_rtl;
+  var isPopulatingStepData = false;
+
+  /**
+   * Remove prev button from first step
+   * @return void
+   */
+  var removePrevFromFirstFirstStep = function removePrevFromFirstFirstStep() {
+    $theForm.find('.fluentform-step:first').find('.step-nav [data-action="prev"]').remove();
+  };
+  var getFormInstance = function getFormInstance() {
+    return window.fluentFormApp($theForm);
+  };
+  var initFormWithSavedState = function initFormWithSavedState() {
+    if (!stepPersistency) return;
+    jQuery(document).ready(function (e) {
+      jQuery.getJSON(fluentFormVars.ajaxUrl, {
+        form_id: $theForm.data('form_id'),
+        action: 'fluentform_step_form_get_data'
+      }).then(function (data) {
+        if (data) {
+          populateFormDataAndSetActiveStep(data);
+        }
+      });
+    });
+  };
+  var populateFormDataAndSetActiveStep = function populateFormDataAndSetActiveStep(_ref) {
+    var response = _ref.response,
+      step_completed = _ref.step_completed;
+    var choiceJsInputs = [];
+    jQuery.each(response, function (key, value) {
+      if (!value) return;
+      var type = Object.prototype.toString.call(value);
+      if (type === '[object Object]') {
+        var $el = jQuery("[data-name=".concat(key, "]"));
+        if ($el.length && $el.attr('data-type') === 'tabular-element') {
+          // Tabular Grid
+          jQuery.each(value, function (row, columns) {
+            var $checkboxes = jQuery("[name=\"".concat(key, "[").concat(row, "]\\[\\]\"]"));
+            if (!$checkboxes.length) {
+              $checkboxes = jQuery("[name=\"".concat(key, "[").concat(row, "]\"]"));
+            }
+            jQuery.each($checkboxes, function (i, cbox) {
+              var $val = $(cbox).val();
+              if (jQuery.inArray($val, columns) !== -1 || $val === columns) {
+                $(cbox).prop('checked', true).change();
+              }
+            });
+          });
+        } else if ($el.attr('data-type') === 'chained-select') {
+          // Chained Select
+          var data = {
+            meta_key: $el.find('select:first').attr('data-meta_key'),
+            form_id: $el.closest('form').attr('data-form_id'),
+            action: 'fluentform_get_chained_select_options',
+            'filter_options': 'all',
+            'keys': value
+          };
+          jQuery.getJSON(fluentFormVars.ajaxUrl, data).then(function (response) {
+            jQuery.each(response, function (key, options) {
+              var $select = $el.find("select[data-key='".concat(key, "']"));
+              if ($select.attr('data-index') != 0) {
+                jQuery.each(options, function (k, val) {
+                  $select.append(jQuery('<option />', {
+                    value: val,
+                    text: val
+                  }));
+                });
+              }
+              $select.attr('disabled', false).val(value[key]);
+            });
+          });
+        } else {
+          // Names, Address e.t.c. fields
+          jQuery.each(value, function (k, v) {
+            jQuery("[name=\"".concat(key, "[").concat(k, "]\"]")).val(v).change();
+          });
+        }
+      } else if (type === '[object Array]') {
+        var _$el = jQuery("[name=".concat(key, "]"));
+        _$el = _$el.length ? _$el : jQuery("[data-name=".concat(key, "]"));
+        _$el = _$el.length ? _$el : jQuery("[name=".concat(key, "\\[\\]]"));
+        if (_$el.attr('type') == 'file') {
+          addFilesToElement(_$el, value);
+        } else if (_$el.prop('multiple')) {
+          if ($.isFunction(window.Choices)) {
+            var choiceJs = _$el.data('choicesjs');
+            choiceJsInputs.push({
+              handler: choiceJs,
+              values: value
+            });
+          } else {
+            _$el.val(value).change();
+          }
+        } else if (_$el.attr('data-type') === 'repeater_field') {
+          // Repeater Field
+          var $tbody = _$el.find('tbody');
+          var elName = _$el.attr('data-name');
+          jQuery.each(value, function (index, arr) {
+            if (index == 0) {
+              $tbody.find('tr:first .ff-el-form-control').each(function (i, el) {
+                $(el).val(arr[i]).change();
+              });
+              return;
+            }
+            var $tr = $tbody.find('tr:last').clone().appendTo($tbody);
+            $tr.find('.ff-el-form-control').each(function (i, el) {
+              var id = 'ffrpt-' + new Date().getTime() + i;
+              $(el).val(arr[i]);
+              $(el).attr({
+                id: id,
+                name: "".concat(elName, "[").concat(index, "][]"),
+                value: arr[i]
+              }).change();
+            });
+          });
+        } else {
+          // Checkbox Groups
+          _$el.each(function (i, $elem) {
+            if (jQuery.inArray($($elem).val(), value) != -1) {
+              $($elem).prop('checked', true).change();
+            }
+          });
+        }
+      } else {
+        // Others
+        var _$el2 = jQuery("[name=".concat(key, "]"));
+        if (_$el2.prop('type') === 'radio' || _$el2.prop('type') === 'checkbox') {
+          jQuery("[name=".concat(key, "][value=\"").concat(value, "\"]")).prop('checked', true).change();
+        } else {
+          var $canvas = _$el2.closest('.ff-el-group').find('.fluentform-signature-pad');
+          if ($canvas.length) {
+            var canvas = $canvas[0];
+            var ctx = canvas.getContext('2d');
+            var img = new Image();
+            img.src = value;
+            img.onload = function () {
+              ctx.drawImage(img, 0, 0);
+            };
+          }
+          _$el2.val(value).change();
+        }
+      }
+    });
+    // populate ChoiceJs Values separately as it breaks the loop
+    if (choiceJsInputs.length > 0) {
+      for (var i = 0; i < choiceJsInputs.length; i++) {
+        choiceJsInputs[i].handler.setValue(choiceJsInputs[i].values).change();
+      }
+    }
+    isPopulatingStepData = true;
+    // let saveProgressForm = $(formSelector).hasClass('ff-form-has-save-progress');
+    // if (stepResume || saveProgressForm) {
+    if (stepResume) {
+      updateSlider(step_completed, fluentFormVars.stepAnimationDuration, true);
+    }
+    isPopulatingStepData = false;
+  };
+
+  /**
+   * Register event handlers for form
+   * steps slider initialization
+   *
+   * @return void
+   */
+  var initStepSlider = function initStepSlider() {
+    var stepsWrapper = $theForm.find('.ff-step-body');
+    var formSteps = $theForm.find('.fluentform-step');
+    var totalSteps = formSteps.length;
+    var stepTitles = $theForm.find('.ff-step-titles li');
+    wrapperWidth = 100 * totalSteps + '%';
+    stepsWrapper.css({
+      width: wrapperWidth
+    });
+    formSteps.css({
+      width: 100 / totalSteps + '%'
+    });
+    $(formSteps[activeStep]).addClass('active');
+    $(stepTitles[activeStep]).addClass('active');
+
+    // submit button should only be printed on last step
+    if (formSteps.length && !formSteps.last().hasClass('active')) {
+      $theForm.find('button[type="submit"]').css('display', 'none');
+    }
+    stepProgressBarHandle({
+      activeStep: activeStep,
+      totalSteps: totalSteps
+    });
+    registerStepNavigators(fluentFormVars.stepAnimationDuration);
+    registerClickableStepNav(stepTitles, formSteps);
+  };
+
+  /**
+   * Register clickable step navigation
+   * @param  {object} stepTitlesNavs
+   * @param {object} formSteps
+   */
+  var registerClickableStepNav = function registerClickableStepNav(stepTitlesNavs, formSteps) {
+    if (stepTitlesNavs.length === 0) {
+      return;
+    }
+    $.each(stepTitlesNavs, function (i, elm) {
+      $(elm).attr('data-step-number', i);
+    });
+    stepTitlesNavs.on('click', function (e) {
+      var formInstance = getFormInstance();
+      var $this = $(this);
+      var currentStep = 0;
+      try {
+        var targetStep = $this.data('step-number');
+        if (isNaN(targetStep)) {
+          return;
+        }
+        //validate other steps before target step before next step
+        $.each(formSteps, function (index, steps) {
+          currentStep = index;
+          if (index < targetStep) {
+            var elements = $(steps).find(':input').not(':button').filter(function (i, el) {
+              return !$(el).closest('.has-conditions').hasClass('ff_excluded');
+            });
+            elements.length && formInstance.validate(elements);
+          }
+        });
+        updateSlider(targetStep, fluentFormVars.stepAnimationDuration, true);
+      } catch (e) {
+        if (!(e instanceof window.ffValidationError)) {
+          throw e;
+        }
+        updateSlider(currentStep, fluentFormVars.stepAnimationDuration, true);
+        formInstance.showErrorMessages(e.messages);
+        formInstance.scrollToFirstError(350);
+      }
+    });
+  };
+
+  /**
+   * Action occurs on step change/form load
+   * @param  {object} stepData
+   * @return {void}
+   */
+  var stepProgressBarHandle = function stepProgressBarHandle(stepData) {
+    if ($theForm.find('.ff-el-progress').length) {
+      var totalSteps = stepData.totalSteps,
+        activeStep = stepData.activeStep;
+      var completeness = 100 / totalSteps * (activeStep + 1);
+      var stepTitles = $theForm.find('.ff-el-progress-title li');
+      var progressBar = $theForm.find('.ff-step-header .ff-el-progress-bar');
+      var span = progressBar.find('span');
+      // progress bar completeness
+      progressBar.css({
+        width: completeness + '%'
+      });
+      if (completeness) {
+        progressBar.append(span.text(parseInt(completeness) + '%'));
+      } else {
+        span.empty();
+      }
+      // $theForm.find('.ff-el-progress-status').text(`${activeStep} out of ${totalSteps} Completed`);
+      var stepText = fluentFormVars.step_text;
+      var stepTitle = $(stepTitles[activeStep]).text();
+      stepText = stepText.replace('%activeStep%', activeStep + 1).replace('%totalStep%', totalSteps).replace('%stepTitle%', stepTitle);
+      $theForm.find('.ff-el-progress-status').html(stepText);
+      stepTitles.css('display', 'none');
+      $(stepTitles[activeStep]).css('display', 'inline');
+    }
+  };
+
+  /**
+   * Register event handlers for form
+   * steps to move forward or backward
+   *
+   * @return void
+   */
+  var registerStepNavigators = function registerStepNavigators(animDuration) {
+    $(document).on('keydown', formSelector + ' .fluentform-step > .step-nav button', function (e) {
+      if (e.which == 9) {
+        if ($(this).data('action') == 'next') {
+          e.preventDefault();
+        }
+      }
+    });
+    $(formSelector).on('click', '.fluentform-step  .step-nav button, .fluentform-step  .step-nav img', function (e) {
+      var btn = $(this).data('action');
+      var actionType = 'next';
+      var current = $(this).closest('.fluentform-step');
+      var formInstance = getFormInstance();
+      if (btn == 'next') {
+        try {
+          var elements = current.find(':input').not(':button').filter(function (i, el) {
+            return !$(el).closest('.has-conditions').hasClass('ff_excluded');
+          });
+          elements.length && formInstance.validate(elements);
+          activeStep++;
+        } catch (e) {
+          if (!(e instanceof window.ffValidationError)) {
+            throw e;
+          }
+          formInstance.showErrorMessages(e.messages);
+          formInstance.scrollToFirstError(350);
+          return;
+        }
+        $theForm.trigger('ff_to_next_page', activeStep);
+        jQuery(document).trigger('ff_to_next_page', {
+          step: activeStep,
+          form: $theForm
+        });
+        var formSteps = $theForm.find('.fluentform-step');
+        $theForm.trigger('ff_render_dynamic_smartcodes', $(formSteps[activeStep]));
+      } else {
+        activeStep--;
+        actionType = 'prev';
+        $theForm.trigger('ff_to_prev_page', activeStep);
+        jQuery(document).trigger('ff_to_prev_page', {
+          step: activeStep,
+          form: $theForm
+        });
+      }
+      var autoScroll = $theForm.find('.ff-step-container').attr('data-disable_auto_focus') != 'yes';
+      updateSlider(activeStep, animDuration, autoScroll, actionType);
+    });
+  };
+
+  /**
+   * Update slider position in multisteps form
+   * @param  {int} goBackToStep
+   * @param  {int} animDuration
+   * @param  {bool} isScrollTop
+   * @return {void}
+   */
+  var updateSlider = function updateSlider(goBackToStep, animDuration) {
+    var isScrollTop = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    var actionType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'next';
+    $('div' + formSelector + '_errors').empty();
+    activeStep = goBackToStep;
+    var stepsWrapper = $theForm.find('.ff-step-body');
+    var stepTitles = $theForm.find('.ff-step-titles li'),
+      formSteps = $theForm.find('.fluentform-step'),
+      totalSteps = formSteps.length,
+      formTop = $theForm.offset().top - (!!$('#wpadminbar') ? 32 : 0) - 20;
+
+    // change active step
+    formSteps.removeClass('active');
+    $(formSteps[activeStep]).addClass('active');
+
+    // change step title
+    stepTitles.removeClass('ff_active ff_completed');
+    $.each(_toConsumableArray(Array(activeStep).keys()), function (setp) {
+      $($(stepTitles[setp])).addClass('ff_completed');
+    });
+    $(stepTitles[activeStep]).addClass('ff_active');
+
+    // animate step on click next/prev
+    var scrollTop = function scrollTop() {
+      if (window.ff_disable_step_scroll) {
+        return;
+      }
+      var scrollElement = $theForm.find('.ff_step_start');
+      if (window.ff_scroll_top_offset) {
+        var formTop = window.ff_scroll_top_offset;
+      } else {
+        var formTop = scrollElement.offset().top - 20;
+      }
+      var isInViewport = function isInViewport($el) {
+        var elementTop = $el.offset().top;
+        var elementBottom = elementTop + $el.outerHeight();
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+      };
+      var isVisible = isInViewport(scrollElement);
+      if (!isVisible || window.ff_force_scroll) {
+        $('html, body').delay(animDuration).animate({
+          scrollTop: formTop
+        }, 0);
+      }
+    };
+    var inlineCssObj = {
+      left: -(activeStep * 100) + '%'
+    };
+    if (isRtl) {
+      inlineCssObj = {
+        right: -(activeStep * 100) + '%'
+      };
+    }
+    var animationType = $(formSteps[activeStep]).closest('.ff-step-container').data('animation_type');
+    switch (animationType) {
+      case 'slide':
+        //slide
+        stepsWrapper.animate(inlineCssObj, animDuration, function () {
+          isScrollTop && scrollTop();
+          stepsWrapper.css({
+            width: wrapperWidth
+          });
+        });
+        break;
+      case 'fade':
+        //fadeIn
+        stepsWrapper.css({
+          opacity: 0
+        });
+        stepsWrapper.animate(inlineCssObj, animDuration, function () {
+          isScrollTop && scrollTop();
+          stepsWrapper.css({
+            width: wrapperWidth
+          });
+        });
+        stepsWrapper.animate({
+          opacity: 1
+        }, animDuration);
+        break;
+      case 'slide_down':
+        //slideDown
+        stepsWrapper.hide();
+        stepsWrapper.css(inlineCssObj);
+        stepsWrapper.slideDown(animDuration);
+        break;
+      case 'none':
+        //fadeIn
+        stepsWrapper.css(inlineCssObj);
+        break;
+      default:
+        stepsWrapper.css(inlineCssObj);
+    }
+
+    //skip saving the last step
+    var isLastStep = activeStep === 0;
+
+    // Fire ajax request to persist the step state/data
+    if (stepPersistency && !isPopulatingStepData & !isLastStep) {
+      saveStepData($theForm, activeStep).then(function (response) {
+        console.log(response);
+      });
+    }
+
+    // update progressbar
+    stepProgressBarHandle({
+      activeStep: activeStep,
+      totalSteps: totalSteps
+    });
+
+    // now we have to check if there has any visible elements or not
+
+    // submit button should only be printed on last step
+    if (formSteps.last().hasClass('active')) {
+      $theForm.find('button[type="submit"]').css('display', 'inline-block');
+      return;
+    } else {
+      $theForm.find('button[type="submit"]').css('display', 'none');
+    }
+    if (!window.ff_disable_auto_step) {
+      var timeout = 0;
+      if ($theForm.find('.fluentform-step.active .ff_excluded').length) {
+        timeout = 50;
+      }
+      setTimeout(function () {
+        var $activeStepDom = $theForm.find('.fluentform-step.active');
+        var childDomCounts = $theForm.find('.fluentform-step.active > div').length - 1;
+        var hiddenDomCounts = $theForm.find('.fluentform-step.active > .ff_excluded').length;
+        if ($theForm.find('.fluentform-step.active > .ff-t-container').length) {
+          childDomCounts -= $theForm.find('.fluentform-step.active > .ff-t-container').length;
+          childDomCounts += $theForm.find('.fluentform-step.active > .ff-t-container > .ff-t-cell > div').length;
+          hiddenDomCounts += $theForm.find('.fluentform-step.active > .ff-t-container > .ff-t-cell > .ff_excluded').length;
+          if ($theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded').length) {
+            hiddenDomCounts -= $theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded').length;
+            hiddenDomCounts -= $theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > .ff_excluded').length;
+            hiddenDomCounts += $theForm.find('.fluentform-step.active > .ff-t-container.ff_excluded > .ff-t-cell > div').length;
+          }
+        }
+        if (childDomCounts == hiddenDomCounts) {
+          $activeStepDom.find('.step-nav button[data-action=' + actionType + '], .step-nav img[data-action=' + actionType + ']').click();
+        }
+      }, timeout);
+    }
+  };
+  var saveStepData = function saveStepData($theForm, activeStep) {
+    var $inputs = $theForm.find(':input').filter(function (i, el) {
+      return !$(el).closest('.has-conditions').hasClass('ff_excluded');
+    });
+    $inputs.filter(function (i, el) {
+      var $el = $(el);
+      return $el.parents().hasClass('ff_repeater_table') && $el.attr('type') == 'select' && !$el.val();
+    }).prepend('<option selected disabled />');
+    var inputData = $inputs.serialize();
+    var hasFiles = false;
+    $.each($theForm.find('[type=file]'), function (index, fileInput) {
+      var params = {},
+        fileInputName = fileInput.name + '[]';
+      params[fileInputName] = [];
+      $(fileInput).closest('div').find('.ff-uploaded-list').find('.ff-upload-preview[data-src]').each(function (i, div) {
+        params[fileInputName][i] = $(this).data('src');
+      });
+      $.each(params, function (k, v) {
+        if (v.length) {
+          var obj = {};
+          obj[k] = v;
+          inputData += '&' + $.param(obj);
+          hasFiles = true;
+        }
+      });
+    });
+    var formData = {
+      active_step: activeStep,
+      data: inputData,
+      form_id: $theForm.data('form_id'),
+      action: 'fluentform_step_form_save_data'
+    };
+    return jQuery.post(fluentFormVars.ajaxUrl, formData);
+  };
+  var maybeAutoSlider = function maybeAutoSlider() {
+    var autoSlider = $theForm.find('.ff-step-container').attr('data-enable_auto_slider') == 'yes';
+    if (!autoSlider) {
+      return;
+    }
+    function maybeAction($el) {
+      var count = $el.closest('.fluentform-step.active').find('.ff-el-group:not(.ff_excluded):not(.ff-custom_html)').length;
+      if (count == 1) {
+        var condCounts = $el.closest('.fluentform-step.active').find('.ff_excluded').length;
+        if (condCounts) {
+          var timeout = window.ffTransitionTimeOut || 400;
+          setTimeout(function () {
+            $el.closest('.fluentform-step.active').find('.ff-btn-next').trigger('click');
+          }, timeout);
+        } else {
+          $el.closest('.fluentform-step.active').find('.ff-btn-next').trigger('click');
+        }
+      }
+    }
+    $theForm.find('.ff-el-form-check-radio,.ff-el-net-label, .ff-el-ratings label').on('click', function () {
+      maybeAction($(this));
+    });
+    $theForm.find('select').on('change', function () {
+      maybeAction($(this));
+    });
+  };
+  var addFilesToElement = function addFilesToElement($el, fileUrls) {
+    var $uploadedList = $el.closest('.ff-el-input--content').find('.ff-uploaded-list');
+    $.each(fileUrls, function (index, file) {
+      file = _typeof(file) === 'object' ? file : {
+        url: file,
+        data_src: file
+      };
+      var previewContainer = $('<div/>', {
+        "class": 'ff-upload-preview',
+        'data-src': file.data_src,
+        style: 'border: 1px solid rgb(111, 117, 125)'
+      });
+      var previewThumb = $('<div/>', {
+        "class": 'ff-upload-thumb'
+      });
+      previewThumb.append($('<div/>', {
+        "class": 'ff-upload-preview-img',
+        style: "background-image: url('".concat(getThumbnail(file.url), "');")
+      }));
+      var previewDetails = $('<div/>', {
+        "class": 'ff-upload-details'
+      });
+      var fileProgress = $('<span/>', {
+        html: fluentFormVars.upload_completed_txt,
+        "class": 'ff-upload-progress-inline-text ff-inline-block'
+      });
+      var name = file.url.substring(file.url.lastIndexOf('/') + 1);
+      if (name.includes('-ff-')) {
+        name = name.substring(name.lastIndexOf('-ff-') + 4);
+      }
+      var fileName = $('<div/>', {
+        "class": 'ff-upload-filename',
+        html: name
+      });
+      var progressBarInline = $("\n\t\t\t\t\t\t\t\t\t<div class=\"ff-upload-progress-inline ff-el-progress\">\n\t\t\t\t\t\t\t\t\t\t<div style=\"width: 100%;\" class=\"ff-el-progress-bar\"></div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t");
+      var removeBtn = $('<span/>', {
+        'data-href': '#',
+        'html': '&times;',
+        'class': 'ff-upload-remove'
+      });
+      var fileSize = $('<div>', {
+        "class": 'ff-upload-filesize ff-inline-block',
+        html: ''
+      });
+      var errorInline = $('<div>', {
+        "class": 'ff-upload-error',
+        style: 'color:red;'
+      });
+      previewDetails.append(fileName, progressBarInline, fileProgress, fileSize, errorInline, removeBtn);
+      previewContainer.append(previewThumb, previewDetails);
+      $uploadedList.append(previewContainer);
+    });
+    $el.trigger('change_remaining', -fileUrls.length);
+    $el.trigger('change');
+  };
+  var getThumbnail = function getThumbnail(file) {
+    var extension = file.split(/[#?]/)[0].split('.').pop().trim().toLowerCase();
+    if (['jpg', 'jpeg', 'gif', 'png'].indexOf(extension) != -1) {
+      return file;
+    }
+    var canvas = document.createElement('canvas');
+    canvas.width = 60;
+    canvas.height = 60;
+    canvas.style.zIndex = 8;
+    canvas.style.position = "absolute";
+    canvas.style.border = "1px solid";
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(0, 0, 60, 60);
+    ctx.font = "13px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(extension, 30, 30, 60);
+    return canvas.toDataURL();
+  };
+  var init = function init() {
+    initFormWithSavedState();
+    removePrevFromFirstFirstStep();
+    initStepSlider();
+    maybeAutoSlider();
+  };
+  return {
+    init: init,
+    updateSlider: updateSlider,
+    populateFormDataAndSetActiveStep: populateFormDataAndSetActiveStep
+  };
+}
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!*******************************************************!*\
+  !*** ./resources/assets/public/form-save-progress.js ***!
+  \*******************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Pro_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pro/slider */ "./resources/assets/public/Pro/slider.js");
+
+(function ($) {
+  $(document.body).on('fluentform_init', function (e, $theForm, form) {
+    var formSelector = '.' + form.form_instance;
+    var hash = -1;
+    var activeStep = 'no';
+    var hasSaveProgress = $(formSelector).hasClass('ff-form-has-save-progress');
+    if (!hasSaveProgress) {
+      return;
+    }
+    var hasFormStep = $(formSelector).hasClass('ff-form-has-steps');
+    if (hasFormStep) {
+      $theForm.on('ff_to_next_page', function (e, currentStep) {
+        activeStep = currentStep;
+      });
+      $theForm.on('ff_to_prev_page', function (e, currentStep) {
+        activeStep = currentStep;
+      });
+    }
+    $(formSelector).find('.ff-btn-save-progress').each(function (key, el) {
+      var $saveBttn = $(el);
+      $saveBttn.on('click', function (e) {
+        var _this = this;
+        e.preventDefault();
+        $saveBttn.addClass('ff-working');
+        var $inputs = $theForm.find(':input').filter(function (i, el) {
+          return !$(el).closest('.has-conditions').hasClass('ff_excluded');
+        });
+        $inputs.filter(function (i, el) {
+          var $el = $(el);
+          return $el.parents().hasClass('ff_repeater_table') && $el.attr('type') == 'select' && !$el.val();
+        }).prepend('<option selected disabled />');
+        var inputData = $inputs.serialize();
+        var hasFiles = false;
+        $.each($theForm.find('[type=file]'), function (index, fileInput) {
+          var params = {},
+            fileInputName = fileInput.name + '[]';
+          params[fileInputName] = [];
+          $(fileInput).closest('div').find('.ff-uploaded-list').find('.ff-upload-preview[data-src]').each(function (i, div) {
+            params[fileInputName][i] = $(this).data('src');
+          });
+          $.each(params, function (k, v) {
+            if (v.length) {
+              var obj = {};
+              obj[k] = v;
+              inputData += '&' + $.param(obj);
+              hasFiles = true;
+            }
+          });
+        });
+        var formData = {
+          source_url: window.form_state_save_vars.source_url,
+          action: 'fluentform_save_form_progress_with_link',
+          data: inputData,
+          form_id: $theForm.data('form_id'),
+          hash: hash,
+          active_step: activeStep,
+          nonce: window.form_state_save_vars.nonce
+        };
+        var saveProgressMessage = formData.form_id + '_save_progress_msg';
+        var savingResponseMsg = '#' + saveProgressMessage;
+        jQuery.post(fluentFormVars.ajaxUrl, formData).then(function (data) {
+          if (data) {
+            var _data$data;
+            hash = data.data.hash;
+            var $linkDom = $theForm.find('.ff-saved-state-link');
+            if (((_data$data = data.data) === null || _data$data === void 0 ? void 0 : _data$data.message) != '') {
+              if ($(savingResponseMsg).length) {
+                $(savingResponseMsg).slideUp('fast');
+              }
+              $('<div/>', {
+                'id': saveProgressMessage,
+                'class': 'ff-message-success ff-el-group'
+              }).html(data.data.message).insertBefore($saveBttn.closest('.ff-el-group'));
+            }
+
+            //Show Link in Input
+            var copyIcon = window.form_state_save_vars.copy_button || 'Copy';
+            var inputDiv = "<div class=\"ff-el-input--content\">\n                                <div class=\"ff_input-group\">\n                                    <input readonly value=\"".concat(data.data.saved_url, "\" class=\"ff-el-form-control\" >\n                                    <div class=\"ff_input-group-append\">\n                                        <button class=\"ff-btn ff-btn-md ff_btn_style ff_btn_copy_link ff_input-group-text\">").concat(copyIcon, "</button>\n                                    </div>\n                                </div>\n                            </div>");
+            var inputGroup = $('<div/>', {
+              "class": 'ff-el-group ff-saved-state-input ff-saved-state-link ff-hide-group',
+              html: inputDiv
+            });
+            $(_this).closest('.ff-el-group').after(inputGroup);
+            inputGroup.fadeIn();
+
+            //Show Email Input
+            var emailPlaceholderStr = window.form_state_save_vars.email_placeholder_str || 'Your Email Here';
+            var emailIcon = window.form_state_save_vars.email_button || 'Email';
+            if ($(_this).hasClass('ff_resume_email_enabled')) {
+              var emailDiv = "<div class=\"ff-el-input--content\">\n                                    <div class=\"ff_input-group\">\n                                        <input type=\"email\" class=\"ff-el-form-control\" placeholder=\"".concat(emailPlaceholderStr, "\" class=\"ff-el-form-control\">\n                                        <div class=\"ff_input-group-append\">\n                                            <button class=\"ff-btn ff-btn-md ff_btn_style ff_btn_is_email ff_input-group-text\">").concat(emailIcon, "</button>\n                                        </div>\n                                    </div>\n                                </div>");
+              var emailGroup = $('<div/>', {
+                "class": 'ff-el-group ff-saved-state-input  ff-email-address ff-hide-group',
+                html: emailDiv
+              });
+              $(inputGroup).after(emailGroup);
+              emailGroup.fadeIn();
+            }
+          }
+        }).fail(function (error) {
+          if ($(savingResponseMsg).length) {
+            $(savingResponseMsg).slideUp('fast');
+          }
+          $('<div/>', {
+            'id': saveProgressMessage,
+            'class': 'ff-message-success ff-el-group text-danger'
+          }).html(error.responseJSON.data.message).insertBefore($saveBttn.closest('.ff-el-group'));
+        }).always(function () {
+          $saveBttn.parent().hide();
+        });
+      });
+    });
+    $(formSelector).on('click', '.ff_btn_copy_link', function (e) {
+      e.preventDefault();
+      var copiedText = $(this).closest('.ff-el-input--content').find('.ff-el-form-control').val();
+      navigator.clipboard.writeText(copiedText);
+      var copySuccess = window.form_state_save_vars.copy_success_button || 'Copied';
+      $(this).html("".concat(copySuccess));
+    });
+    $(formSelector).on('click', '.ff_btn_is_email', function (e) {
+      e.preventDefault();
+      var emailBtn = $(this).closest('.ff-el-group');
+      var to_email = $(this).closest('.ff-email-address').find('input').val();
+      $('.ff-email-address').find('input').val('');
+      var link = $('.ff-saved-state-link').find('input').val();
+      var formData = {
+        source_url: window.form_state_save_vars.source_url,
+        action: 'fluentform_email_progress_link',
+        form_id: $theForm.data('form_id'),
+        to_email: to_email,
+        link: link,
+        hash: hash,
+        nonce: window.form_state_save_vars.nonce
+      };
+      var emailResponse = formData.form_id + '_save_progress_email_response';
+      var responseMessageSelector = '#' + emailResponse;
+      jQuery.post(fluentFormVars.ajaxUrl, formData).then(function (data) {
+        if (data) {
+          emailBtn.removeClass('ff-el-is-error');
+          if ($(responseMessageSelector).length) {
+            $(responseMessageSelector).slideUp('fast');
+          }
+          $('<div/>', {
+            'id': emailResponse,
+            'class': 'ff-message-success ff-el-group'
+          }).html(data.data.response).insertAfter(emailBtn);
+        }
+      }).fail(function (error) {
+        if (error) {
+          emailBtn.addClass('ff-el-is-error');
+          if ($(responseMessageSelector).length) {
+            $(responseMessageSelector).slideUp('fast');
+          }
+          $('<div/>', {
+            'id': emailResponse,
+            'class': 'ff-message-success ff-el-group text-danger'
+          }).html(error.responseJSON.data.Error).insertAfter(emailBtn);
+        }
+      });
+    });
+
+    //load data
+    var hashKey = false;
+    if (typeof window.form_state_save_vars !== 'undefined') {
+      hashKey = window.form_state_save_vars.key;
+    }
+    if (!hashKey) {
+      return;
+    }
+    $theForm.append("<input type=\"hidden\" value=\"".concat(hashKey, "\" class=\"__fluent_state_hash\" name=\"__fluent_state_hash\"/>"));
+    jQuery.getJSON(fluentFormVars.ajaxUrl, {
+      form_id: $theForm.data('form_id'),
+      action: 'fluentform_get_form_state',
+      hash: hashKey,
+      nonce: window.form_state_save_vars.nonce
+    }).then(function (data) {
+      if (data) {
+        var sliderInstance = (0,_Pro_slider__WEBPACK_IMPORTED_MODULE_0__["default"])($, $theForm, window.fluentFormVars, formSelector);
+        sliderInstance.populateFormDataAndSetActiveStep(data);
+      }
+    });
+  });
+})(jQuery);
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=form-save-progress.js.map

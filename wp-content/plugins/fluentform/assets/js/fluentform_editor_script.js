@@ -1,1 +1,47 @@
-jQuery(document).ready((function(e){fluentform_editor_vars.forms.unshift({value:"",text:"--Select Form--"}),e("#fluent_form_insert_button").on("click",(function(t){t.preventDefault();var o=tinyMCE.activeEditor,r="fluentform-forms-popup-error"+(new Date).getTime();o.windowManager.open({width:400,height:100,title:"Add Form",body:[{type:"listbox",name:"form_id",label:"Select a Form:",values:fluentform_editor_vars.forms}],onselect:function(t){e("#"+r).remove()},onsubmit:function(t){if(t.data.form_id)o.insertContent("[fluentform id="+t.data.form_id+"]");else{t.preventDefault();var n=t.target.$el.find("#"+r);n=n.length||e("<div/>",{class:"error",id:r,style:"text-align:center;color:#dc3232",html:"No form is selected!"}).appendTo(t.target.$el)}}})}))}));
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!************************************************************!*\
+  !*** ./resources/assets/admin/fluentform_editor_script.js ***!
+  \************************************************************/
+jQuery(document).ready(function ($) {
+  fluentform_editor_vars.forms.unshift({
+    value: '',
+    text: '--Select Form--'
+  });
+  $('#fluent_form_insert_button').on('click', function (e) {
+    e.preventDefault();
+    var editor = tinyMCE.activeEditor;
+    var uid = 'fluentform-forms-popup-error' + new Date().getTime();
+    editor.windowManager.open({
+      width: 400,
+      height: 100,
+      title: 'Add Form',
+      body: [{
+        type: 'listbox',
+        name: 'form_id',
+        label: 'Select a Form:',
+        values: fluentform_editor_vars.forms
+      }],
+      onselect: function onselect(e) {
+        $('#' + uid).remove();
+      },
+      onsubmit: function onsubmit(e) {
+        if (e.data.form_id) {
+          editor.insertContent('[fluentform id=' + e.data.form_id + ']');
+        } else {
+          e.preventDefault();
+          var alert = e.target.$el.find('#' + uid);
+          alert = alert.length || $('<div/>', {
+            "class": 'error',
+            id: uid,
+            style: 'text-align:center;color:#dc3232',
+            html: 'No form is selected!'
+          }).appendTo(e.target.$el);
+        }
+      }
+    });
+  });
+});
+/******/ })()
+;
+//# sourceMappingURL=fluentform_editor_script.js.map

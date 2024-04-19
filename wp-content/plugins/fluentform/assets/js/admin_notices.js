@@ -1,1 +1,114 @@
-({initNagButton:function(){jQuery(".ff_nag_cross").on("click",(function(t){t.preventDefault();var n=jQuery(this).attr("data-notice_name"),e=jQuery(this).attr("data-notice_type");jQuery("#ff_notice_"+n).remove();var o=FluentFormsGlobal.$rest.route("noticeAction");FluentFormsGlobal.$rest.post(o,{notice_name:n,action_type:e}).then((function(t){console.log(t)})).catch((function(t){console.log(t)}))}))},initTrackYes:function(){jQuery(".ff_track_yes").on("click",(function(t){t.preventDefault();var n=jQuery(this).attr("data-notice_name"),e=0;jQuery("#ff-optin-send-email").attr("checked")&&(e=1),jQuery("#ff_notice_"+n).remove(),FluentFormsGlobal.$post({action:"fluentform_notice_action_track_yes",notice_name:n,email_enabled:e}).then((function(t){console.log(t)})).fail((function(t){console.log(t)}))}))},initSmtpInstall:function(){var t=jQuery(".intstall_fluentsmtp");t.on("click",(function(n){var e=this;n.preventDefault(),jQuery(this).attr("disabled",!0),jQuery(".ff_addon_installing").show(),FluentFormsGlobal.$post({action:"fluentform_install_fluentsmtp"}).then((function(n){t.text("Please wait...."),n.is_installed&&n.config_url?window.location.href=n.config_url:n.is_installed?location.reload():alert("something is wrong when installing the plugin. Please install FluentSMTP manually."),console.log(n)})).fail((function(t){var n="something is wrong when installing the plugin. Please install FluentSMTP manually.";t.responseJSON&&t.responseJSON.message&&(n=t.responseJSON.message),alert(n),console.log(t)})).always((function(){jQuery(e).attr("disabled",!1),jQuery(".ff_addon_installing").hide()}))}))},handleReviewQuery:function(){var t=jQuery(".ff_review_now");t.on("click",(function(n){n.preventDefault(),jQuery(this).attr("disabled",!0);var e=jQuery(this).attr("data-notice_name"),o=FluentFormsGlobal.$rest.route("noticeAction");FluentFormsGlobal.$rest.post(o,{notice_name:e}).then((function(n){n&&(t.html("Thank You! We Really appreciate it.").fadeIn(),setTimeout((function(){var n=t.attr("href");jQuery("#ff_notice_"+e).remove(),window.open(n,"_blank")}),1e3))})).catch((function(t){console.log(t)}))}))},initReady:function(){var t=this;jQuery(document).ready((function(){t.initNagButton(),t.initTrackYes(),t.initSmtpInstall(),t.handleReviewQuery()}))}}).initReady();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*************************************************!*\
+  !*** ./resources/assets/admin/admin_notices.js ***!
+  \*************************************************/
+var ffNoticeApp = {
+  initNagButton: function initNagButton() {
+    var $btn = jQuery('.ff_nag_cross');
+    $btn.on('click', function (e) {
+      e.preventDefault();
+      var noticeName = jQuery(this).attr('data-notice_name');
+      var noticeType = jQuery(this).attr('data-notice_type');
+      jQuery('#ff_notice_' + noticeName).remove();
+      var url = FluentFormsGlobal.$rest.route('noticeAction');
+      FluentFormsGlobal.$rest.post(url, {
+        notice_name: noticeName,
+        action_type: noticeType
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    });
+  },
+  initTrackYes: function initTrackYes() {
+    var $btn = jQuery('.ff_track_yes');
+    $btn.on('click', function (e) {
+      e.preventDefault();
+      var noticeName = jQuery(this).attr('data-notice_name');
+      var emailEnabled = 0;
+      if (jQuery('#ff-optin-send-email').attr('checked')) {
+        emailEnabled = 1;
+      }
+      jQuery('#ff_notice_' + noticeName).remove();
+      FluentFormsGlobal.$post({
+        action: 'fluentform_notice_action_track_yes',
+        notice_name: noticeName,
+        email_enabled: emailEnabled
+      }).then(function (response) {
+        console.log(response);
+      }).fail(function (error) {
+        console.log(error);
+      });
+    });
+  },
+  initSmtpInstall: function initSmtpInstall() {
+    var $btn = jQuery('.intstall_fluentsmtp');
+    $btn.on('click', function (e) {
+      var _this = this;
+      e.preventDefault();
+      jQuery(this).attr('disabled', true);
+      jQuery('.ff_addon_installing').show();
+      FluentFormsGlobal.$post({
+        action: 'fluentform_install_fluentsmtp'
+      }).then(function (response) {
+        $btn.text('Please wait....');
+        if (response.is_installed && response.config_url) {
+          window.location.href = response.config_url;
+        } else if (response.is_installed) {
+          location.reload();
+        } else {
+          alert('something is wrong when installing the plugin. Please install FluentSMTP manually.');
+        }
+        console.log(response);
+      }).fail(function (error) {
+        var message = 'something is wrong when installing the plugin. Please install FluentSMTP manually.';
+        if (error.responseJSON && error.responseJSON.message) {
+          message = error.responseJSON.message;
+        }
+        alert(message);
+        console.log(error);
+      }).always(function () {
+        jQuery(_this).attr('disabled', false);
+        jQuery('.ff_addon_installing').hide();
+      });
+    });
+  },
+  handleReviewQuery: function handleReviewQuery() {
+    var $btn = jQuery('.ff_review_now');
+    $btn.on('click', function (e) {
+      e.preventDefault();
+      jQuery(this).attr('disabled', true);
+      var noticeName = jQuery(this).attr('data-notice_name');
+      var route = FluentFormsGlobal.$rest.route('noticeAction');
+      FluentFormsGlobal.$rest.post(route, {
+        notice_name: noticeName
+      }).then(function (response) {
+        if (response) {
+          $btn.html('Thank You! We Really appreciate it.').fadeIn();
+          setTimeout(function () {
+            var url = $btn.attr('href');
+            jQuery('#ff_notice_' + noticeName).remove();
+            window.open(url, '_blank');
+          }, 1000);
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    });
+  },
+  initReady: function initReady() {
+    var _this2 = this;
+    jQuery(document).ready(function () {
+      _this2.initNagButton();
+      _this2.initTrackYes();
+      _this2.initSmtpInstall();
+      _this2.handleReviewQuery();
+    });
+  }
+};
+ffNoticeApp.initReady();
+/******/ })()
+;
+//# sourceMappingURL=admin_notices.js.map
